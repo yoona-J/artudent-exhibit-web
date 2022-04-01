@@ -91,7 +91,7 @@ router.post('/products', (req, res) => {
       }) 
   }
 
-  console.log('term', req.body.searchTerm)
+  // console.log('term', req.body.searchTerm)
 
 })
 

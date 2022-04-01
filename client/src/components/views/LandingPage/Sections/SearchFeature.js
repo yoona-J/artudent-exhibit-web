@@ -12,7 +12,7 @@ function SearchFeature(props) {
         setSearchTerm(event.currentTarget.value)
         props.refreshFunction(event.currentTarget.value)
 
-        console.log('e', event.currentTarget.value)
+        // console.log('e', event.currentTarget.value)
     }
 
     return (
