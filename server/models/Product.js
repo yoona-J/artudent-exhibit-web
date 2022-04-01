@@ -40,12 +40,14 @@ const productSchema = mongoose.Schema({
     }
 }, { timeStamps: true });
 
+//어떤 부분에서 키워드를 검색할 건지
 productSchema.index (
     {
         title: "text",
         description: "text"
     },
     {
+        //숫자가 클 수록 더 중요하게 생각한다 (-배)
         weights: {
             title: 5,
             description: 1

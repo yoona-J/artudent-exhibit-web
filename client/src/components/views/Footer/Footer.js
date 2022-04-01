@@ -1,14 +1,38 @@
 import React from 'react'
 import {Icon} from 'antd';
+import Logo from './img/AA.png';
 
 function Footer() {
     return (
-        <div style={{
-            height: '80px', display: 'flex',
-            flexDirection: 'column', alignItems: 'center',
-            justifyContent: 'center', fontSize:'1rem'
-        }}>
-           <p> Happy Coding  <Icon type="smile" /></p>
+        <div
+            style={{
+                width: '100%',
+                height: '160px',
+                display: 'block',
+                background: '#818181'
+            }}>
+
+            <img
+                style={{
+                    height: '70px',
+                    display: 'flex',
+                    float: 'left',
+                    margin: '45px'
+                }}
+                src={Logo}></img>
+
+            <div
+                style={{
+                    textAlign: 'right',
+                    fontSize: '14px',
+                    float: 'right',
+                    margin: '30px'
+                }}>
+                <p>고객 문의</p>
+                <p>About Artudent</p>
+                <Icon type="copyright"></Icon>
+                COPYRIGHT ALL RIGHT RESERVED
+            </div>
         </div>
     )
 }

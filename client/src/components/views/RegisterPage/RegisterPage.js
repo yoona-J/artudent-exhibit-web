@@ -9,6 +9,7 @@ import {
   Form,
   Input,
   Button,
+  Divider,
 } from 'antd';
 
 const formItemLayout = {
@@ -41,16 +42,19 @@ function RegisterPage(props) {
     <Formik
       initialValues={{
         email: '',
-        lastName: '',
+        ID: '',
         name: '',
         password: '',
-        confirmPassword: ''
+        confirmPassword: '',
+        number: ''
       }}
       validationSchema={Yup.object().shape({
         name: Yup.string()
           .required('Name is required'),
-        lastName: Yup.string()
-          .required('Last Name is required'),
+        number: Yup.string()
+          .required('Number is required'),
+        ID: Yup.string()
+          .required('ID is required'),
         email: Yup.string()
           .email('Email is invalid')
           .required('Email is required'),
@@ -68,12 +72,14 @@ function RegisterPage(props) {
             email: values.email,
             password: values.password,
             name: values.name,
-            lastname: values.lastname,
+            ID: values.ID,
+            number: values.number,
             image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
           };
 
           dispatch(registerUser(dataToSubmit)).then(response => {
             if (response.payload.success) {
+              alert("회원가입이 완료되었습니다.")
               props.history.push("/login");
             } else {
               alert(response.payload.err.errmsg)
@@ -98,40 +104,26 @@ function RegisterPage(props) {
         } = props;
         return (
           <div className="app">
-            <h2>Sign up</h2>
+            <h2>SIGN UP</h2>
+            <Divider />
+            <h5>필수 입력 항목</h5>
+            <br />
             <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
 
-              <Form.Item required label="Name">
+              <Form.Item required label="아이디">
                 <Input
-                  id="name"
-                  placeholder="Enter your name"
+                  id="ID"
+                  placeholder="Enter your ID"
                   type="text"
-                  value={values.name}
+                  value={values.ID}
                   onChange={handleChange}
                   onBlur={handleBlur}
                   className={
-                    errors.name && touched.name ? 'text-input error' : 'text-input'
+                    errors.ID && touched.ID ? 'text-input error' : 'text-input'
                   }
                 />
-                {errors.name && touched.name && (
-                  <div className="input-feedback">{errors.name}</div>
-                )}
-              </Form.Item>
-
-              <Form.Item required label="Last Name">
-                <Input
-                  id="lastName"
-                  placeholder="Enter your Last Name"
-                  type="text"
-                  value={values.lastName}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  className={
-                    errors.lastName && touched.lastName ? 'text-input error' : 'text-input'
-                  }
-                />
-                {errors.lastName && touched.lastName && (
-                  <div className="input-feedback">{errors.lastName}</div>
+                {errors.ID && touched.ID && (
+                  <div className="input-feedback">{errors.ID}</div>
                 )}
               </Form.Item>
 
@@ -152,7 +144,7 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Password" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
+              <Form.Item required label="비밀번호" hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
                 <Input
                   id="password"
                   placeholder="Enter your password"
@@ -169,7 +161,7 @@ function RegisterPage(props) {
                 )}
               </Form.Item>
 
-              <Form.Item required label="Confirm" hasFeedback>
+              <Form.Item required label="비밀번호 확인" hasFeedback>
                 <Input
                   id="confirmPassword"
                   placeholder="Enter your confirmPassword"
@@ -183,6 +175,40 @@ function RegisterPage(props) {
                 />
                 {errors.confirmPassword && touched.confirmPassword && (
                   <div className="input-feedback">{errors.confirmPassword}</div>
+                )}
+              </Form.Item>
+
+              <Form.Item required label="이름">
+                <Input
+                  id="name"
+                  placeholder="Enter your name"
+                  type="text"
+                  value={values.name}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.name && touched.name ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.name && touched.name && (
+                  <div className="input-feedback">{errors.name}</div>
+                )}
+              </Form.Item>
+
+              <Form.Item required label="연락처">
+                <Input
+                  id="number"
+                  placeholder="Enter your call number"
+                  type="text"
+                  value={values.number}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  className={
+                    errors.number && touched.number ? 'text-input error' : 'text-input'
+                  }
+                />
+                {errors.number && touched.number && (
+                  <div className="input-feedback">{errors.number}</div>
                 )}
               </Form.Item>
 

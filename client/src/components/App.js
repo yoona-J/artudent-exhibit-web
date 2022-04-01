@@ -19,7 +19,10 @@ function App() {
       <NavBar />
       <div style={{ paddingTop: '69px', minHeight: 'calc(100vh - 80px)' }}>
         <Switch>
-          <Route exact path="/" component={Auth(LandingPage, null)} />
+          {/* <Route exact path="/" component={Auth(MainPage, null)} /> */}
+          {/* <Route exact path="/exhibition" component={Auth(ExhibitPage, null)} /> */}
+          <Route exact path="/artwork" component={Auth(LandingPage, null)} />
+          {/* <Route exact path="/library" component={Auth(LibraryPage, null)} /> */}
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/product/upload" component={Auth(UploadProductPage, true)} />
