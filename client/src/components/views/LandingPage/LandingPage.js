@@ -6,6 +6,7 @@ import ImageSlider from '../../utils/ImageSlider';
 import Checkbox from './Sections/CheckBox';
 import { continents } from './Sections/Datas';
 import SearchFeature from './Sections/SearchFeature';
+import SubscribeButton from '../MainPage/img/subscribeButton.png'
 
 function LandingPage() {
 
@@ -80,13 +81,8 @@ function LandingPage() {
 
             <Card cover={<ImageSlider images = {
                     product.images
-                } />}
-                //사진 한장만 띄우는 방법
-                
-                //cover={<img style={{ width: '100%', maxHeight: '150px' }} src={`http://localhost:5000/${product.images[0]}`} />}
-                //cover={<img style={{ width: '200px', height: '180px' }} src={`http://localhost:5000/${product.images[0]}`} />}
-            >
-                <Meta title={product.title} description={`$${product.price}`}/>
+                } />}>
+                <Meta title={product.title} description={`${product.artist}`}/>
             </Card>
 
         </Col>
@@ -179,6 +175,20 @@ function LandingPage() {
                         <button onClick={loadMoreHandler}>더보기</button>
                     </div>
             }
+            <br />
+            <br />
+            <div style={{textAlign: 'center'}}>
+            <img
+                    src={SubscribeButton}
+                    style={{
+                        width: '45%',
+                        padding: '80px 0px 20px 0px'
+                    }}></img>
+                <h5
+                    style={{
+                        padding: '0px 0px 100px 0px'
+                    }}>나만의 온라인 전시회 페이지를 직접 신청해보세요.</h5>
+            </div>
 
         </div>
     )

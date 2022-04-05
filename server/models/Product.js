@@ -6,16 +6,26 @@ const productSchema = mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    //form - 이름
     title: {
         type: String,
         maxlength: 50
     },
-    //form - 내용
+    artist: {
+        type: String,
+        maxlength: 50
+    },
+    tech: {
+        type: String,
+        maxlength: 50
+    },
+    dimensions: {
+        type: String,
+        maxlength: 50
+    },
     description: {
         type: String
     },
-    price: {
+    year: {
         type: Number,
         default: 0
     },
@@ -44,13 +54,13 @@ const productSchema = mongoose.Schema({
 productSchema.index (
     {
         title: "text",
-        description: "text"
+        artist: "text"
     },
     {
         //숫자가 클 수록 더 중요하게 생각한다 (-배)
         weights: {
             title: 5,
-            description: 1
+            artist: 5
         }
     }
 )

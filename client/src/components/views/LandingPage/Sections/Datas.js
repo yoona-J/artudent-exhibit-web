@@ -1,31 +1,31 @@
 const continents = [
     {
         "_id": 1,
-        "name": "Africa"
+        "name": "일러스트"
     },
     {
         "_id": 2,
-        "name": "Europe"
+        "name": "도예/조각"
     },
     {
         "_id": 3,
-        "name": "Asia"
+        "name": "회화/판화"
     },
     {
         "_id": 4,
-        "name": "North America"
+        "name": "조형"
     },
     {
         "_id": 5,
-        "name": "South America"
+        "name": "가구디자인"
     },
     {
         "_id": 6,
-        "name": "Australia"
+        "name": "미디어 아트"
     },
     {
         "_id": 7,
-        "name": "Antarctica"
+        "name": "사진"
     }
 ]
 

@@ -7,6 +7,7 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import MainPage from "./views/MainPage/MainPage";
 import ExhibitPage from './views/ExhibitPage/ExhibitPage';
+import LibraryPage from './views/Library/Library';
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import UploadProductPage from './views/UploadProductPage/UploadProductPage';
@@ -24,7 +25,7 @@ function App() {
           <Route exact path="/" component={Auth(MainPage, null)} />
           <Route exact path="/exhibition" component={Auth(ExhibitPage, null)} />
           <Route exact path="/artwork" component={Auth(LandingPage, null)} />
-          {/* <Route exact path="/library" component={Auth(LibraryPage, null)} /> */}
+          <Route exact path="/library" component={Auth(LibraryPage, true)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/product/upload" component={Auth(UploadProductPage, true)} />
