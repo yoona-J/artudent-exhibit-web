@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
-import {Icon, Col, Card, Row, Divider} from 'antd';
+import {Icon, Col, Card, Row, Divider, Pagination} from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
 import Checkbox from './Sections/CheckBox';
@@ -12,7 +12,7 @@ function LandingPage() {
 
     const [Products, setProducts] = useState([])
     const [Skip, setSkip] = useState(0)
-    const [Limit, setLimit] = useState(6)
+    const [Limit, setLimit] = useState(9)
     const [PostSize, setPostSize] = useState(0)
     const [Filters, setFilters] = useState({
         //나중에는 price 부분이 필요 없음 -> 검색 기능이니까
@@ -65,7 +65,8 @@ function LandingPage() {
         let body = {
             skip: skip,
             limit: Limit,
-            loadMore: true
+            // loadMore: true
+            loadMore: false
         }
 
         getProducts(body)
@@ -162,17 +163,20 @@ function LandingPage() {
                 {renderCards}
             </Row>
 
-            {/* db에 있는 게시물이 모두 나타나면 더보기 버튼을 삭제 */}
-            <br/> {
-                PostSize >= Limit && <div
-                        style={{
+            {/* db에 있는 게시물이 모두 나타나면 더보기 버튼을 삭제 - PostSize >= Limit &&  */}
+            <br/> 
+            <br/>
+            {
+                <div style={{
                             // display: 'flex',
                             // justifyContent: 'center',
                             width: '100%',
                             textAlign: 'center'
                         }}
                         >
-                        <button onClick={loadMoreHandler}>더보기</button>
+                        {/* <button onClick={loadMoreHandler}>더보기</button> */}
+                        {/* 1페이지로 다시 돌아가는 경우도 설정해야 함 */}
+                        <Pagination onChange={loadMoreHandler} total={50} />
                     </div>
             }
             <br />

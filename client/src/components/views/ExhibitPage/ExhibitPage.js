@@ -1,11 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+// import axios from "axios";
 import SubscribeButton from '../MainPage/img/subscribeButton.png'
-import {Divider, Card, Col, Row} from 'antd';
+import {Pagination, Divider, Card, Col, Row} from 'antd';
 import ExhibitionImage from './img/exhibitImg.jpg'
 
 const {Meta} = Card;
 
 function ExhibitPage() {
+
+    const InitialState = {
+        start: 0,
+        end: 10,
+        current: 1
+    }
+
+    // https://han7096.medium.com/%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%8E%98%EC%9D%B4%EC%A7%80%EB%84%A4%EC%9D%B4%EC%85%98-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-eb4f0f4a1da0
+
+    // export default function (state = InitialState, action) 
 
     return (
         <div
@@ -189,7 +200,11 @@ function ExhibitPage() {
 
 
                 {/* skip */}
-
+                <br/>
+                <br/>
+                <div>
+                    {/* <Pagination onChange={loadMoreHandler} total={50} /> */}
+                    </div>
 
 
 
