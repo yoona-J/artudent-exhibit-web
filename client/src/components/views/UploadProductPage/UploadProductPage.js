@@ -3,6 +3,7 @@ import {Button, Divider, Form, Input} from 'antd';
 import FileUpload from '../../utils/FileUpload';
 import Axios from 'axios';
 import {Select} from 'antd';
+import Upload from './img/upload.jpg'
 
 const {Option} = Select;
 const {TextArea} = Input;
@@ -109,6 +110,8 @@ function UploadProductPage(props) {
     }
 
     return (
+        <div>
+            {/* <img src={Upload} style={{position: 'absolute', width: '100%', height: '560px', top: '50px', zIndex: 1}}></img> */}
         <div
             style={{
                 maxWidth: '700px',
@@ -119,18 +122,22 @@ function UploadProductPage(props) {
                     textAlign: 'center',
                     marginBottom: '2rem'
                 }}>
-                <h2>Upload Your Artwork</h2>
+                <h1 style={{position:'relative', padding: '200px 0px 0px 0px', color: '#000', zIndex: 10}}>Upload Your Artwork</h1>
                 <div
                     style={{
+                        position: 'relative',
                         width: '50%',
-                        margin: '1rem auto'
+                        margin: '1rem auto',
+                        zIndex: 10
                     }}>
                     <Divider/>
                 </div>
+                <div style={{position: 'relative', zIndex: 10}}>
                 <h5>반드시 자신이 제작한 작품을 등록해주세요.</h5>
                 <h5>타인의 저작권 및 인권을 침해하는 사진을 업로드 시, 불이익을 당할 수 있습니다.</h5>
                 <Divider/>
                 <h4>사진을 클릭하면 삭제됩니다.</h4>
+                </div>
             </div>
 
             <Form onSubmitCapture={submitHandler}>
@@ -201,6 +208,7 @@ function UploadProductPage(props) {
                 </Button>
 
             </Form>
+        </div>
         </div>
     )
 }

@@ -11,6 +11,9 @@ import LibraryPage from './views/Library/Library';
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer"
 import UploadProductPage from './views/UploadProductPage/UploadProductPage';
+import MyPage from './views/MyPage/Mypage';
+import MyUpload from './views/MyPage/MyUpload/MyUpload';
+import ServiceCenter from './views/LoginPage/ServiceCenter';
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside  -> 로그인 한 상태에서만 나타나도록 지정
@@ -29,6 +32,9 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/product/upload" component={Auth(UploadProductPage, true)} />
+          <Route exact path="/mypage" component={Auth(MyPage, true)} />
+          <Route exact path="/myupload" component={Auth(MyUpload, true)} />
+          <Route exact path="/service" component={Auth(ServiceCenter, null)} />          
         </Switch>
       </div>
       <Footer />

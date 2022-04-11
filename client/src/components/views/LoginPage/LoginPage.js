@@ -45,9 +45,9 @@ function LoginPage(props) {
           dispatch(loginUser(dataToSubmit))
             .then(response => {
               if (response.payload.loginSuccess) {
-                window.localStorage.setItem('userId', response.payload.userId);
+                window.localStorage.setItem('userId', response.payload.email);
                 if (rememberMe === true) {
-                  window.localStorage.setItem('rememberMe', values.id);
+                  window.localStorage.setItem('rememberMe', values.email);
                 } else {
                   localStorage.removeItem('rememberMe');
                 }
@@ -126,15 +126,16 @@ function LoginPage(props) {
 
               <Form.Item>
                 <Checkbox id="rememberMe" onChange={handleRememberMe} checked={rememberMe} >Remember me</Checkbox>
-                <a className="login-form-forgot" href="/reset_user" style={{ float: 'right' }}>
+                {/* <a className="login-form-forgot" href="/reset_user" style={{ float: 'right' }}>
                   비밀번호 찾기
-                  </a>
+                  </a> */}
                 <div>
                   <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%' }} disabled={isSubmitting} onSubmit={handleSubmit}>
                     Log in
                 </Button>
                 </div>
-                <a href="/register">회원가입</a>
+                <a href="/register" style={{float: 'right'}}>회원가입</a>
+                <a href="/service" style={{float: 'left'}}>아이디/비밀번호 찾기</a>
               </Form.Item>
             </form>
           </div>

@@ -3,22 +3,16 @@ import React, { useState } from 'react'
 import SubscribeButton from '../MainPage/img/subscribeButton.png'
 import {Pagination, Divider, Card, Col, Row} from 'antd';
 import ExhibitionImage from './img/exhibitImg.jpg'
+import Exhibition from './img/Background.png';
+import Opacity from './img/opacity.png';
 
 const {Meta} = Card;
 
 function ExhibitPage() {
 
-    const InitialState = {
-        start: 0,
-        end: 10,
-        current: 1
-    }
-
-    // https://han7096.medium.com/%EB%A6%AC%EC%95%A1%ED%8A%B8-%ED%8E%98%EC%9D%B4%EC%A7%80%EB%84%A4%EC%9D%B4%EC%85%98-%EA%B5%AC%ED%98%84%ED%95%98%EA%B8%B0-eb4f0f4a1da0
-
-    // export default function (state = InitialState, action) 
-
     return (
+        <div>
+            <img src={Exhibition} style={{position: 'absolute', width: '100%', height: '560px', top: '50px', zIndex: 1}}></img>
         <div
             style={{
                 width: '60%',
@@ -27,11 +21,13 @@ function ExhibitPage() {
             <div style={{
                     textAlign: 'center'
                 }}>
-                <h2>EXHIBITION</h2>
+                <h1 style={{position:'relative', padding: '200px 0px 0px 0px', color: '#FFF', zIndex: 10}}>EXHIBITION</h1>
                 <div
                     style={{
+                        position: 'relative',
                         width: '50%',
-                        margin: '1rem auto'
+                        margin: '1rem auto',
+                        zIndex: 10
                     }}>
                     <Divider/>
                 </div>
@@ -44,7 +40,7 @@ function ExhibitPage() {
 
 
                 {/* cards */}
-                <div style={{ textAlign: 'left' }}>
+                <div style={{ position: 'relative', padding: '130px 0px 0px 0px', textAlign: 'left', zIndex: 10 }}>
                     <Row gutter={[50, 50]}>
                         <Col lg={8} md={12} xs={22}>
                             {/* {ExhibitionImgCard} */}
@@ -226,6 +222,7 @@ function ExhibitPage() {
                     }}>나만의 온라인 전시회 페이지를 직접 신청해보세요.</h5>
                 </div>
             </div>
+        </div>
         </div>
     )
 }

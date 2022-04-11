@@ -17,7 +17,7 @@ function NavBar() {
   };
 
   return (
-    <nav className="menu" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
+    <nav className="menu" style={{ position: 'fixed', zIndex: 15, width: '100%' }}>
       <div className="menu__logo">
         <a href="/">
           <img style={{ width: '100px' }} src={Logo}></img>

@@ -35,6 +35,25 @@ const userSchema = mongoose.Schema({
     },
     number : {
         type: Number
+    },
+    school : {
+        type: String,
+        maxlength: 50
+    },
+    college : {
+        type: String,
+    },
+    department : {
+        type: String,
+    },
+    nickName : {
+        type: String,
+    },
+    sns : {
+        type: String
+    },
+    career : {
+        type: String
     }
 })
 
