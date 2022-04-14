@@ -47,6 +47,12 @@ const productSchema = mongoose.Schema({
     views: {
         type: Number,
         default: 0
+    },
+    snsCheck: {
+        type: Boolean,
+    },
+    personalInfo: {
+        type: Boolean,
     }
 }, { timeStamps: true });
 

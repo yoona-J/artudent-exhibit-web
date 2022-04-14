@@ -15,6 +15,10 @@ import MyPage from './views/MyPage/Mypage';
 import MyUpload from './views/MyPage/MyUpload/MyUpload';
 import ServiceCenter from './views/LoginPage/ServiceCenter';
 
+
+//ExhibitionPage
+// import ExhibitPage1 from './views/ExhibitPage/ExhibitionPages/first.html';
+
 //null   Anyone Can go inside
 //true   only logged in user can go inside  -> 로그인 한 상태에서만 나타나도록 지정
 //false  logged in user can't go inside
@@ -34,7 +38,13 @@ function App() {
           <Route exact path="/product/upload" component={Auth(UploadProductPage, true)} />
           <Route exact path="/mypage" component={Auth(MyPage, true)} />
           <Route exact path="/myupload" component={Auth(MyUpload, true)} />
-          <Route exact path="/service" component={Auth(ServiceCenter, null)} />          
+          <Route exact path="/service" component={Auth(ServiceCenter, null)} />
+
+
+
+
+          {/* ExhibitionPage*/}
+          {/* <Route exact path="/exhibition/1" component={Auth(ExhibitPage1, null)} /> */}
         </Switch>
       </div>
       <Footer />

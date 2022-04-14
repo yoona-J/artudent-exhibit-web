@@ -24,8 +24,7 @@ function LandingPage() {
     const [PostSize, setPostSize] = useState(0)
     const [Filters, setFilters] = useState({
         //나중에는 price 부분이 필요 없음 -> 검색 기능이니까
-        continents: [],
-        price: []
+        continents: []
     })
 
     const [SearchTerm, setSearchTerm] = useState("")
@@ -42,6 +41,7 @@ function LandingPage() {
 
     }, [])
 
+    //loadMore
     const getProducts = (body) => {
         axios
             .post('/api/product/products', body)
@@ -170,12 +170,16 @@ function LandingPage() {
                             zIndex: 10
                         }}>
                         <Divider/>
-                        <a href="/product/upload" style={{color: 'white'}}>
+                        <a
+                            href="/product/upload"
+                            style={{
+                                color: 'white'
+                            }}>
                             <Icon
                                 type="upload"
                                 style={{
                                     padding: '30px 0px 20px 0px',
-                                    fontSize: '50px',
+                                    fontSize: '50px'
                                 }}></Icon>
                         </a>
                     </div>
@@ -183,18 +187,27 @@ function LandingPage() {
 
                 {/* Search */}
 
-                <div style={{ position: 'relative', padding: '0px 0px 120px 0px', zIndex: 10 }}>
+                <div
+                    style={{
+                        position: 'relative',
+                        padding: '0px 0px 120px 0px',
+                        zIndex: 10
+                    }}>
                     <SearchFeature refreshFunction={updateSearchTerm}/>
                 </div>
 
                 {/* filter */}
 
                 {/* checkbox */}
-                <div style={{ position: 'relative', zIndex: 10 }}>
-                <Checkbox
-                    list={continents}
-                    handleFilters={filters => handleFilters(filters, "continents")}/>
-                    </div>
+                <div
+                    style={{
+                        position: 'relative',
+                        zIndex: 10
+                    }}>
+                    <Checkbox
+                        list={continents}
+                        handleFilters={filters => handleFilters(filters, "continents")}/>
+                </div>
                 <br/> {/* radiobox */}
 
                 {/* Cards */}

@@ -34,9 +34,8 @@ router.post('/image', (req, res) => {
 router.post('/', (req, res) => {
 
   //받아온 정보들을 DB에 넣어준다
-  
+  console.log(req.body)
   const product = new Product(req.body)
-
   product.save((err) => {
     if(err) return res.status(400).json({ success: false, err })
     return res.status(200).json({ success: true })
@@ -46,11 +45,10 @@ router.post('/', (req, res) => {
 
 
 router.post('/products', (req, res) => {
-
   let limit = req.body.limit ? parseInt(req.body.limit) : 20;
   let skip = req.body.skip ? parseInt(req.body.skip) : 0;
   let term = req.body.searchTerm
-  console.log(term)
+  // console.log(term)
   //filters
   let findArgs = {};
 

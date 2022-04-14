@@ -46,6 +46,7 @@ function MainPage() {
                     <Row gutter={[50, 50]}>
                         <Col lg={8} md={12} xs={22}>
                             {/* {ExhibitionImgCard} */}
+                            <div><a href={`/exhibition/1`}>
                             <Card
                                 hoverable="hoverable"
                                 style={{
@@ -58,9 +59,11 @@ function MainPage() {
                                 <p/>
                                 <Meta title="Description." description="Jeong Yoona"/>
                             </Card>
+                            </a></div>
                         </Col>
                         <Col lg={8} md={12} xs={22}>
                             {/* {ExhibitionImgCard} */}
+                            <div><a href={`/exhibition/2`}>
                             <Card
                                 hoverable="hoverable"
                                 style={{
@@ -73,9 +76,11 @@ function MainPage() {
                                 <p/>
                                 <Meta title="Description." description="Jeong Yoona"/>
                             </Card>
+                            </a></div>
                         </Col>
                         <Col lg={8} md={12} xs={22}>
                             {/* {ExhibitionImgCard} */}
+                            <div><a href={`/exhibition/3`}>
                             <Card
                                 hoverable="hoverable"
                                 style={{
@@ -88,6 +93,7 @@ function MainPage() {
                                 <p/>
                                 <Meta title="Description." description="Jeong Yoona"/>
                             </Card>
+                            </a></div>
                         </Col>
                     </Row>
                 </div>
