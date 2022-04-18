@@ -37,6 +37,7 @@ router.post('/', (req, res) => {
   console.log(req.body)
   const product = new Product(req.body)
   product.save((err) => {
+    console.log('err', err)
     if(err) return res.status(400).json({ success: false, err })
     return res.status(200).json({ success: true })
   })

@@ -41,7 +41,7 @@ function UploadProductPage(props) {
     const [Tech, setTech] = useState("")
     const [Dimensions, setDimensions] = useState("")
     const [Year, setYear] = useState("")
-    const [Continent, setContinent] = useState(1)
+    const [Continent, setContinent] = useState([])
     const [Images, setImages] = useState([])
     const [SNS, setSNS] = useState(true)
     const [IsModal, setIsModal] = useState(false)
@@ -79,11 +79,13 @@ function UploadProductPage(props) {
     const yearChangeHandler = (event) => {
         setYear(event.currentTarget.value)
     }
-    const continentChangeHandler = (event) => {
-        setContinent(event.currentTarget.value)
+    const continentChangeHandler = (value) => {
+        setContinent(value)
+        
+        // console.log(`selected ${value}`);
     }
     const snsCheckedHandler = (event) => {
-        console.log(event.target.checked, event.target.value)
+        // console.log(event.target.checked, event.target.value)
         setSNS(event.target.value)
     }
     const modalCheckedHandler = (event) => {
@@ -97,8 +99,14 @@ function UploadProductPage(props) {
         //페이지 리프레시 방지
         event.preventDefault();
         //모든 state가 채워지지 않으면 리턴되지 않도록 함
-        if (!Title || !Description || !Artist || !Continent || !Images || !Tech || !Dimensions ||!SNS ||!PersonalInfo) {
+        if (!Title || !Description || !Artist || !Images || !Tech || !Dimensions || !Continent) {
             return alert("모든 값을 넣어주세요.")
+        }   
+        if (Continent.length > 1) {
+            return alert("한개의 태그를 입력해주세요.")
+        }
+        if (PersonalInfo == false) {
+            return alert("개인정보이용에 동의하지 않으시면 게시물을 업로드하실 수 없습니다.")
         }
 
         //서버에 채운 값들을 req로 보낸다.
@@ -322,15 +330,24 @@ function UploadProductPage(props) {
                                 textUnderlinePosition: 'under'
                             }}>#Tag</h3>
                     </div>
-                    <select onChange={continentChangeHandler} value={Continent}>
+
+                    <Select
+                        mode="multiple"
+                        allowClear
+                        style={{ width: '100%' }}
+                        placeholder="한가지만 선택해주세요."
+                        defaultValue={[]}
+                        onChange={continentChangeHandler}
+                        value={Continent}
+                        >
                         {
                             Continents.map(item => (
-                                <option key={item.key} value={item.key}>
+                                <Option key={item.key} value={item.key}>
                                     {item.value}
-                                </option>
+                                </Option>
                             ))
                         }
-                    </select>
+                    </Select>
 
                     <h3
                         style={{
@@ -386,12 +403,12 @@ function UploadProductPage(props) {
                         <Button type="ghost" onClick={showModal}>
                             더보기
                         </Button>
-                        <Modal title="Basic Modal" visible={IsModal} onOk={handleOk} onCancel={handleCancel}>
+                        <Modal title="Artudent 개인정보처리방침" visible={IsModal} onOk={handleOk} onCancel={handleCancel}>
                         <div>
-                            <p>&lt; ARTUDENT &gt;(&#39;www.artudent.co.kr&#39;이하 &#39;ARTUDENT&#39;)은(는) 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
+                            <p>&lt; ARTUDENT &gt; (&#39;www.artudent.co.kr&#39;이하 &#39;ARTUDENT&#39;)은(는) 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
                             <p>○ 이 개인정보처리방침은 2021년 7월 01일부터 적용됩니다.</p>
                             <p>제1조(개인정보의 처리 목적)</p>
-                            <p>&lt; ARTUDENT &gt;(&#39;www.artudent.co.kr&#39;이하 &#39;ARTUDENT&#39;)은(는) 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
+                            <p>&lt; ARTUDENT &gt; (&#39;www.artudent.co.kr&#39;이하 &#39;ARTUDENT&#39;)은(는) 다음의 목적을 위하여 개인정보를 처리합니다. 처리하고 있는 개인정보는 다음의 목적 이외의 용도로는 이용되지 않으며 이용 목적이 변경되는 경우에는 「개인정보 보호법」 제18조에 따라 별도의 동의를 받는 등 필요한 조치를 이행할 예정입니다.</p>
                             <ol>
                             <li>홈페이지 회원가입 및 관리</li>
                             </ol>

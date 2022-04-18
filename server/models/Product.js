@@ -41,8 +41,8 @@ const productSchema = mongoose.Schema({
     },
     //토글 버튼
     continents: {
-        type: Number,
-        default: 1
+        type: Array,
+        default: []
     },
     views: {
         type: Number,

@@ -6,7 +6,7 @@ import {
     Card,
     Row,
     Divider,
-    Pagination
+    Pagination,
 } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
@@ -202,6 +202,7 @@ function LandingPage() {
                 <div
                     style={{
                         position: 'relative',
+                        padding: '0px 0px 30px 0px',
                         zIndex: 10
                     }}>
                     <Checkbox
