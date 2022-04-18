@@ -46,7 +46,7 @@ function RightMenu(props) {
                     <a href="/">Home</a>
                 </Menu.Item> */}
                 <Menu.Item key="mypage">
-                    <a href="/mypage">MY</a>
+                    <a href="/mypage/:userId">MY</a>
                 </Menu.Item>
                 <Menu.Item key="logout">
                     <a onClick={logoutHandler}>LOG OUT</a>

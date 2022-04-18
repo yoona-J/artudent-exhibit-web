@@ -23,13 +23,12 @@ function LandingPage() {
     const [Limit, setLimit] = useState(9)
     const [PostSize, setPostSize] = useState(0)
     const [Filters, setFilters] = useState({
-        //나중에는 price 부분이 필요 없음 -> 검색 기능이니까
         continents: []
     })
 
     const [SearchTerm, setSearchTerm] = useState("")
 
-    //더보기 버튼
+    //paginational
     useEffect(() => {
 
         let body = {
@@ -47,14 +46,18 @@ function LandingPage() {
             .post('/api/product/products', body)
             .then(response => {
                 if (response.data.success) {
-                    // console.log(response.data) loadMoreHandler의 body를 가져온다. --> 값이 있으면 skip +
+                    console.log(response.data) 
+                    
+                    console.log('loadmore=', body.loadMore)
+                    // loadMoreHandler의 body를 가져온다. --> 값이 있으면 skip +
                     // Limit 값을 불러와 게시물을 나타낸다
                     if (body.loadMore) {
                         setProducts([
                             ...Products,
                             ...response.data.productInfo
                         ])
-                    } else {
+                    } 
+                    else {
                         setProducts(response.data.productInfo)
                     }
                     setPostSize(response.data.postSize)
@@ -72,8 +75,8 @@ function LandingPage() {
         let body = {
             skip: skip,
             limit: Limit,
-            // loadMore: true
-            loadMore: false
+            loadMore: true
+            // loadMore: false
         }
 
         getProducts(body)
@@ -179,7 +182,7 @@ function LandingPage() {
                                 type="upload"
                                 style={{
                                     padding: '30px 0px 20px 0px',
-                                    fontSize: '50px'
+                                    fontSize: '50px',
                                 }}></Icon>
                         </a>
                     </div>
@@ -199,6 +202,7 @@ function LandingPage() {
                 {/* filter */}
 
                 {/* checkbox */}
+                {/* https://ant.design/components/tag/ */}
                 <div
                     style={{
                         position: 'relative',
@@ -209,28 +213,26 @@ function LandingPage() {
                         list={continents}
                         handleFilters={filters => handleFilters(filters, "continents")}/>
                 </div>
-                <br/> {/* radiobox */}
+                <br/>
 
                 {/* Cards */}
 
                 <Row gutter={[50, 50]}>
                     {renderCards}
                 </Row>
-
-                {/* db에 있는 게시물이 모두 나타나면 더보기 버튼을 삭제 - PostSize >= Limit &&  */}
                 <br/>
-                <br/> {
+                <br/> {PostSize >= Limit && (
                     <div
                             style={{
-                                // display: 'flex', justifyContent: 'center',
                                 width: '100%',
                                 textAlign: 'center'
                             }}>
-                            {/* <button onClick={loadMoreHandler}>더보기</button> */}
-                            {/* 1페이지로 다시 돌아가는 경우도 설정해야 함 */}
-                            <Pagination onChange={loadMoreHandler} total={20}/>
+                            <button onClick={loadMoreHandler}>더보기</button>
                         </div>
-                }
+                        
+                )}
+                {/* backTop */}
+                {/* https://ant.design/components/back-top/ */}
                 <br/>
                 <br/>
                 <div
@@ -248,7 +250,7 @@ function LandingPage() {
                             padding: '0px 0px 100px 0px'
                         }}>나만의 온라인 전시회 페이지를 직접 신청해보세요.</h5>
                 </div>
-                /</div>
+                </div>
         </div>
     )
 }

@@ -14,7 +14,7 @@ function Mypage() {
                 <h2>MyPage</h2>
 
                 <button>
-                    <a href='/myupload'>MyUpload</a>
+                    <a href='/myupload/:userId'>MyUpload</a>
                 </button>
             </div>
         </div>

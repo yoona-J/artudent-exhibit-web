@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const { Product } = require('../models/Product');
+const { User } = require('../models/User')
 
 //=================================
 //             Product
@@ -34,7 +35,7 @@ router.post('/image', (req, res) => {
 router.post('/', (req, res) => {
 
   //받아온 정보들을 DB에 넣어준다
-  console.log(req.body)
+  // console.log(req.body)
   const product = new Product(req.body)
   product.save((err) => {
     console.log('err', err)
@@ -88,6 +89,7 @@ router.post('/products', (req, res) => {
           success: true, productInfo, 
           postSize: productInfo.length })
       }) 
+      // console.log('productInfo=', productInfo)
   }
 
   // console.log('term', req.body.searchTerm)

@@ -69,4 +69,14 @@ router.get("/logout", auth, (req, res) => {
     });
 });
 
+router.post('/user', (req, res) => {
+
+    User.find()
+      .exec((err, userInfo) => {
+        if (err) return res.status(400).json({ success: false, err })
+          return res.status(200).json({ 
+            success: true, userInfo})
+      })
+  })
+
 module.exports = router;

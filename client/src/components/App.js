@@ -36,11 +36,9 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/product/upload" component={Auth(UploadProductPage, true)} />
-          <Route exact path="/mypage" component={Auth(MyPage, true)} />
-          <Route exact path="/myupload" component={Auth(MyUpload, true)} />
+          <Route exact path="/mypage/:userId" component={Auth(MyPage, true)} />
+          <Route exact path="/myupload/:userId" component={Auth(MyUpload, true)} />
           <Route exact path="/service" component={Auth(ServiceCenter, null)} />
-
-
 
 
           {/* ExhibitionPage*/}
