@@ -1,27 +1,25 @@
-import React, {useState, useEffect} from 'react'
+import React, { useEffect } from 'react'
 import {Table} from 'antd';
 import Axios from 'axios';
 
-function MyUpload() {
-    
-    // const [Product, setProduct] = useState([])
-    // const userId = props.match.params.userId
-    // console.log('userId=', userId)
+function MyUpload(props) {
 
-    useEffect(() => {
+    const userId = props.match.params.userId
+    console.log('userId=', userId)
 
-        //body로 유저 id만 가져오게 만들기
-      
-        Axios.post('/api/users/user')
-            .then(response => {
-                if (response.data.success) {
-                    console.log(response.data)
-                } else {
-                    alert("상품을 가져오는 데 실패했습니다.")
-                }
-            })
-    }, [])
-    
+    // const productId = props.match.params.productId
+    // console.log('productId=', productId)
+
+    // useEffect(() => {
+    //   Axios.get(`/api/product/upload_by_id?id=${productId}`)
+    //     .then(response => {
+    //         if(response.data.success) {
+    //             console.log('response=', response.data)
+    //         } else {
+    //             alert('상품 가져오기를 실패했습니다.')
+    //         }
+    //     })
+    // }, [])
 
     const columns = [
         {

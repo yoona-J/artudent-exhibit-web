@@ -14,7 +14,7 @@ import UploadProductPage from './views/UploadProductPage/UploadProductPage';
 import MyPage from './views/MyPage/Mypage';
 import MyUpload from './views/MyPage/MyUpload/MyUpload';
 import ServiceCenter from './views/LoginPage/ServiceCenter';
-
+import DetailProductPage from './views/DetailProductPage/DetailProductPage';
 
 //ExhibitionPage
 // import ExhibitPage1 from './views/ExhibitPage/ExhibitionPages/first.html';
@@ -36,10 +36,12 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/product/upload" component={Auth(UploadProductPage, true)} />
-          <Route exact path="/mypage/:userId" component={Auth(MyPage, true)} />
-          <Route exact path="/myupload/:userId" component={Auth(MyUpload, true)} />
+          <Route exact path="/mypage" component={Auth(MyPage, true)} />
+          <Route exact path="/mypage/:userId" component={Auth(MyUpload, true)} />
           <Route exact path="/service" component={Auth(ServiceCenter, null)} />
 
+          {/* ArtworkDetailPage */}
+          <Route exact path="/product/:productId" component={Auth(DetailProductPage, null)} />
 
           {/* ExhibitionPage*/}
           {/* <Route exact path="/exhibition/1" component={Auth(ExhibitPage1, null)} /> */}

@@ -1,7 +1,20 @@
 import React from 'react'
-import MyUpload from './MyUpload/MyUpload'
+import { useSelector } from 'react-redux'
+import { Button } from 'antd'
 
-function Mypage() {
+function Mypage(props) {
+
+    // console.log('userId', userId)
+    const users = useSelector((state) => state.user.userData)
+    console.log('users', users)
+
+    const MyUploadPage = () => {
+        window.location.href = `/mypage/${users._id}`
+    }
+
+    // console.log('user=', )
+    // console.log('MyUpload=', MyUploadPage)
+
     return (
         <div
             style={{
@@ -12,10 +25,10 @@ function Mypage() {
                     textAlign: 'center'
                 }}>
                 <h2>MyPage</h2>
-
-                <button>
-                    <a href='/myupload/:userId'>MyUpload</a>
-                </button>
+                
+                
+            <Button onClick={MyUploadPage}>button</Button>
+                    
             </div>
         </div>
     )

@@ -96,5 +96,36 @@ router.post('/products', (req, res) => {
 
 })
 
+router.get('/products_by_id', (req, res) => {
+
+  let type = req.query.type
+  let productId = req.query.id
+
+  ///products_by_id를 이용해 db에서 product와 같은 상품의 정보를 가져온다
+
+  Product.find({ _id: productId })
+    .populate('writer')
+    .exec((err, product) => {
+      if(err) return res.status(400).send(err)
+      return res.status(200).send({ success: true, product })
+    })
+
+})
+
+router.get('/update_by_id', (req, res) => {
+
+  let type = req.query.type
+  let productId = req.query.id
+
+  ///products_by_id를 이용해 db에서 product와 같은 상품의 정보를 가져온다
+
+  Product.find({ _id: productId })
+    .populate('writer')
+    .exec((err, product) => {
+      if(err) return res.status(400).send(err)
+      return res.status(200).send({ success: true, product })
+    })
+
+})
 
 module.exports = router;

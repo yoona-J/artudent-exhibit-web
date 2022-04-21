@@ -6,7 +6,6 @@ import {
     Card,
     Row,
     Divider,
-    Pagination,
 } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
@@ -86,14 +85,14 @@ function LandingPage() {
 
     const renderCards = Products.map((product, index) => {
 
-        // console.log('product', product)
+        console.log('product', product)
 
         return <Col lg={8} md={12} xs={24} key={index}>
 
             <Card
-                cover={<ImageSlider images = {
+                cover={<a href={`/product/${product._id}`}><ImageSlider images = {
                     product.images
-                } />}>
+                } /></a>}>
                 <Meta title={product.title} description={`${product.artist}`}/>
             </Card>
 
