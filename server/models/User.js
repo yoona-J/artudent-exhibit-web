@@ -54,7 +54,11 @@ const userSchema = mongoose.Schema({
     },
     career : {
         type: String
-    }
+    },
+    library: {
+        type: Array,
+        default: []
+    },
 })
 
 

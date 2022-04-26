@@ -61,8 +61,8 @@ router.post('/products', (req, res) => {
     }
   }
 
-  // console.log('findArgs', findArgs)
-
+  console.log('findArgs', findArgs)
+  console.log(term)
 
   if (term) {
     //product collection에 들어있는 모든 정보 가져오기
@@ -72,6 +72,7 @@ router.post('/products', (req, res) => {
       .skip(skip)
       .limit(limit)
       .exec((err, productInfo) => {
+        console.log(productInfo)
         if (err) return res.status(400).json({ success: false, err })
         return res.status(200).json({ 
           success: true, productInfo, 
@@ -99,31 +100,23 @@ router.post('/products', (req, res) => {
 router.get('/products_by_id', (req, res) => {
 
   let type = req.query.type
-  let productId = req.query.id
+  let productIds = req.query.id
 
-  ///products_by_id를 이용해 db에서 product와 같은 상품의 정보를 가져온다
-
-  Product.find({ _id: productId })
-    .populate('writer')
-    .exec((err, product) => {
-      if(err) return res.status(400).send(err)
-      return res.status(200).send({ success: true, product })
+  if(type === "array") {
+    //[] 배열 형식으로 바꾼다
+    let ids = req.query.id.split(',')
+    productIds = ids.map(item => {
+      return item
     })
-
-})
-
-router.get('/update_by_id', (req, res) => {
-
-  let type = req.query.type
-  let productId = req.query.id
+  }
 
   ///products_by_id를 이용해 db에서 product와 같은 상품의 정보를 가져온다
 
-  Product.find({ _id: productId })
+  Product.find({ _id: { $in: productIds } })
     .populate('writer')
     .exec((err, product) => {
       if(err) return res.status(400).send(err)
-      return res.status(200).send({ success: true, product })
+      return res.status(200).send(product)
     })
 
 })

@@ -11,7 +11,7 @@ function MyUpload(props) {
     // console.log('productId=', productId)
 
     // useEffect(() => {
-    //   Axios.get(`/api/product/upload_by_id?id=${productId}`)
+    //   Axios.get(`/api/product/upload_by_id?id=${userId}`)
     //     .then(response => {
     //         if(response.data.success) {
     //             console.log('response=', response.data)

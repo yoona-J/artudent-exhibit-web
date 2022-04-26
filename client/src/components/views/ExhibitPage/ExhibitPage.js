@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 // import axios from "axios";
 import SubscribeButton from '../MainPage/img/subscribeButton.png'
-import {Pagination, Divider, Card, Col, Row} from 'antd';
+import {BackTop, Divider, Card, Col, Row} from 'antd';
 import ExhibitionImage from './img/exhibitImg.jpg'
 import Exhibition from './img/Background.png';
 import Opacity from './img/opacity.png';
@@ -9,6 +9,18 @@ import Opacity from './img/opacity.png';
 const {Meta} = Card;
 
 function ExhibitPage() {
+
+    
+    const style = {
+        height: 40,
+        width: 40,
+        lineHeight: '40px',
+        borderRadius: 4,
+        backgroundColor: '#FFCD4A',
+        color: '#4C5472',
+        textAlign: 'center',
+        fontSize: 14,
+      };
 
     return (
         <div>
@@ -222,6 +234,13 @@ function ExhibitPage() {
                     {/* <Pagination onChange={loadMoreHandler} total={50} /> */}
                     </div>
 
+                
+                {/* backTop */}
+                {/* https://ant.design/components/back-top/ */}
+
+                <BackTop>
+                  <div style={style}>UP</div>
+                </BackTop>
 
 
                 <br />

@@ -6,6 +6,7 @@ import {
     Card,
     Row,
     Divider,
+    BackTop,
 } from 'antd';
 import Meta from 'antd/lib/card/Meta';
 import ImageSlider from '../../utils/ImageSlider';
@@ -137,6 +138,17 @@ function LandingPage() {
         getProducts(body)
     }
 
+    const style = {
+        height: 40,
+        width: 40,
+        lineHeight: '40px',
+        borderRadius: 4,
+        backgroundColor: '#FFCD4A',
+        color: '#4C5472',
+        textAlign: 'center',
+        fontSize: 14,
+      };
+
     return (
         <div>
             <img
@@ -193,7 +205,7 @@ function LandingPage() {
                     style={{
                         position: 'relative',
                         padding: '0px 0px 120px 0px',
-                        zIndex: 10
+                        zIndex: 10,
                     }}>
                     <SearchFeature refreshFunction={updateSearchTerm}/>
                 </div>
@@ -226,12 +238,18 @@ function LandingPage() {
                                 width: '100%',
                                 textAlign: 'center'
                             }}>
-                            <button onClick={loadMoreHandler}>더보기</button>
+                            <button onClick={loadMoreHandler} 
+                            style={{width: '130px', height: '40px', borderRadius: '10px', backgroundColor: '#7A8095', color: '#fff'}}>
+                                More ArtWork</button>
                         </div>
                         
                 )}
                 {/* backTop */}
                 {/* https://ant.design/components/back-top/ */}
+
+                <BackTop>
+                  <div style={style}>UP</div>
+                </BackTop>
                 <br/>
                 <br/>
                 <div

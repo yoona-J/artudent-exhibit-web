@@ -20,7 +20,7 @@ function SearchFeature(props) {
             <br/>
             <div>
                 <Search
-                    placeholder="input search text"
+                    placeholder="제목 또는 작가명을 검색하세요"
                     onChange={searchHandler}
                     value={SearchTerm}/>
             </div>
