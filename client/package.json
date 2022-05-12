@@ -30,6 +30,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://yoona-j.github.io/artudent-exhibit-web",
   "eslintConfig": {
     "extends": "react-app"
   },
