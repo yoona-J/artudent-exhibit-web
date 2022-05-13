@@ -7,6 +7,7 @@ import {
     ADD_TO_LIB,
     GET_LIB_ITEMS,
     REMOVE_LIB_ITEM,
+    GET_UPLOAD_ITEMS,
 } from './types';
 import { USER_SERVER } from '../components/Config.js';
 
@@ -106,6 +107,30 @@ export function removeLibItem(productId){
 
     return {
         type: REMOVE_LIB_ITEM,
+        payload: request
+    }
+}
+
+export function getUploadItems(uploadItems, userUpload){
+    
+    const request = axios.get(`/api/product/products_by_id?id=${uploadItems}&type=array`)
+        .then(response => {
+            // libItems에 해당하는 정보들을 product collection에서 가져온 후에 quentity 정보를 넣어준다
+
+            userUpload.forEach(uploadItem => {
+                response.data.forEach((productDetail, index) => {
+                    //게시물의 id와 user library의 id와 같으면 quentity를 가져온다
+
+                    if(uploadItem.id === productDetail._id) {
+                        response.data[index].quantity = uploadItem.quantity
+                    }
+                })
+            })
+            return response.data;
+        });
+
+    return {
+        type: GET_UPLOAD_ITEMS,
         payload: request
     }
 }

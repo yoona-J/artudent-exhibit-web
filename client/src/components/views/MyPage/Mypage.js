@@ -2,18 +2,17 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Button } from 'antd'
 
-function Mypage(props) {
+function Mypage() {
 
     // console.log('userId', userId)
-    const users = useSelector((state) => state.user.userData)
+    const users = useSelector(state => state.user.userData)
     console.log('users', users)
+
+    console.log('ii=', users)
 
     const MyUploadPage = () => {
         window.location.href = `/mypage/${users._id}`
     }
-
-    // console.log('user=', )
-    // console.log('MyUpload=', MyUploadPage)
 
     return (
         <div

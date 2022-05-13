@@ -50,11 +50,13 @@ router.post('/products', (req, res) => {
   let limit = req.body.limit ? parseInt(req.body.limit) : 20;
   let skip = req.body.skip ? parseInt(req.body.skip) : 0;
   let term = req.body.searchTerm
+  let order = req.body.order ? req.body.order : "desc";
+  let sortBy = req.body.sortBy ? req.body.sortBy : "_id";
   // console.log(term)
   //filters
   let findArgs = {};
 
-  //filters의 key(continents, price)값을 가져온다
+  //filters의 key(continents)값을 가져온다
   for(let key in req.body.filters) {
     if (req.body.filters[key].length > 0) {
       findArgs[key] = req.body.filters[key];
@@ -64,11 +66,13 @@ router.post('/products', (req, res) => {
   console.log('findArgs', findArgs)
   console.log(term)
 
+
   if (term) {
     //product collection에 들어있는 모든 정보 가져오기
     Product.find(findArgs)
       .find({ $text: { $search: term } })
       .populate("writer")  //DB에 저장된 writer ID 정보로 작성자에 대한 정보들을 모두 가져온다
+      .sort([[sortBy, order]])
       .skip(skip)
       .limit(limit)
       .exec((err, productInfo) => {
@@ -82,6 +86,7 @@ router.post('/products', (req, res) => {
     //product collection에 들어있는 모든 정보 가져오기
     Product.find(findArgs)
       .populate("writer")  //DB에 저장된 writer ID 정보로 작성자에 대한 정보들을 모두 가져온다
+      .sort([[sortBy, order]])
       .skip(skip)
       .limit(limit)
       .exec((err, productInfo) => {

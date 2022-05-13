@@ -3,11 +3,11 @@ import { useDispatch } from 'react-redux'
 import { getLibItems, removeLibItem } from '../../../_actions/user_actions'
 import UserCardBlock from './Sections/UserCardBlock';
 import { Empty } from 'antd'
+import LibraryImg from './img/library.png'
 
 function Library(props) {
 
     const dispatch = useDispatch();
-    const [IsEmpty, setIsEmpty] = useState(false)
 
     useEffect(() => {
 
@@ -30,9 +30,6 @@ function Library(props) {
 
         dispatch(removeLibItem(productId))
             .then(response => {
-                if(response.payload.productInfo.length <= 0) {
-                    setIsEmpty(false)
-                }
             })
 
     }
@@ -43,14 +40,24 @@ function Library(props) {
 
 
   return (
-    <div style={{ width: '70%', margin: '3rem auto'}}>
-        <h1> Library </h1>
-
-        <div>
-           <UserCardBlock products={props.user.libDetail} removeItem={removeFromLib} />   
+    <div>
+        <img src={LibraryImg}
+            style={{
+                position: 'absolute',
+                width: '100%',
+                height: '560px',
+                top: '50px',
+                zIndex: 1
+            }}
+        >
+        </img>
+        <div style={{ position: 'relative', width: '70%', margin: '3rem auto', textAlign: 'center', zIndex: 10}}>
+            <h1 style={{ color: '#fff', padding: '40px 0px 100px 0px'}}> Library </h1>
+            <div>
+                <UserCardBlock products={props.user.libDetail} removeItem={removeFromLib} />   
+            </div>
         </div>
-
-        {IsEmpty ? <h2></h2> : <Empty description={false} image={Empty.PRESENTED_IMAGE_SIMPLE}><h4>좋아요한 게시물이 없습니다.</h4></Empty>}
+        
     </div>
   )
 }

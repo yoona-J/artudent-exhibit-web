@@ -24,6 +24,7 @@ router.get("/auth", auth, (req, res) => {
         sns: req.user.sns,
         career: req.user.career,
         library: req.user.library,
+        upload: req.user.upload,
     });
 });
 

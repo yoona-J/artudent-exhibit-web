@@ -7,7 +7,7 @@ function UserCardBlock(props) {
         props.products && props.products.map((product, index) => (
             <tr key={index}>
                 <td>
-                    {product.title}
+                    <a href={`/product/${product._id}`}>{product.title}</a>
                 </td>
                 <td>
                     {product.artist}

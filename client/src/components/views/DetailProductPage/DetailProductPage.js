@@ -43,7 +43,6 @@ function DetailProductPage(props) {
 
         </Col>
       </Row>
-
     </div>
   )
 }

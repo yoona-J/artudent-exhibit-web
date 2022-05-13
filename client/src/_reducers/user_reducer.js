@@ -6,6 +6,7 @@ import {
     ADD_TO_LIB,
     GET_LIB_ITEMS,
     REMOVE_LIB_ITEM,
+    GET_UPLOAD_ITEMS,
 } from '../_actions/types';
  
 
@@ -25,6 +26,8 @@ export default function(state={},action){
             return {...state, libDetail: action.payload }
         case REMOVE_LIB_ITEM:
             return {...state, libDetail: action.payload.productInfo, userData: { ...state.userData, library: action.payload.library } }  
+        case GET_UPLOAD_ITEMS:
+            return {...state, uploadDetail: action.payload }
         default:
             return state;
     }

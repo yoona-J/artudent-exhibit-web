@@ -25,7 +25,7 @@ ReactDOM.render(
             window.__REDUX_DEVTOOLS_EXTENSION__()
         )}
     >
-        <BrowserRouter basename={process.env.PUBLIC_URL}>
+        <BrowserRouter>
             <App />
         </BrowserRouter>
     </Provider>

@@ -22,6 +22,8 @@ function SearchFeature(props) {
                 <Search
                     placeholder="제목 또는 작가명을 검색하세요"
                     onChange={searchHandler}
+                    enterButton={'Search'}
+                    size={'large'}
                     value={SearchTerm}/>
             </div>
         </div>

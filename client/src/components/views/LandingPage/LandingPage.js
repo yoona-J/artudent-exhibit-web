@@ -142,7 +142,7 @@ function LandingPage() {
         height: 40,
         width: 40,
         lineHeight: '40px',
-        borderRadius: 4,
+        borderRadius: 20,
         backgroundColor: '#FFCD4A',
         color: '#4C5472',
         textAlign: 'center',
@@ -260,7 +260,7 @@ function LandingPage() {
                         src={SubscribeButton}
                         style={{
                             width: '45%',
-                            padding: '80px 0px 20px 0px'
+                            padding: '100px 0px 20px 0px'
                         }}></img>
                     <h5
                         style={{

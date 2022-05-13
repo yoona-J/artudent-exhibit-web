@@ -11,15 +11,15 @@ function ProductInfo(props) {
 
         //필요한 정보를 라이브러리에 넣어준다
         dispatch(AddToLib(props.detail._id))
-
         console.log('click=', props.detail._id)
-
-
+        
+        if (props.detail._id.length >= 1) {
+            alert('라이브러리에 저장되었습니다.')
+        }
     }
-
     
     return (
-        <div>
+        <div style={{ width: '100%' }}>
             <Descriptions title="Work Info." bordered="bordered">
                 <Descriptions.Item label="Title">{props.detail.title}</Descriptions.Item>
                 <Descriptions.Item label="Artist">{props.detail.artist}</Descriptions.Item>
@@ -27,7 +27,10 @@ function ProductInfo(props) {
                 <Descriptions.Item label="Dimemsions">{props.detail.dimensions}</Descriptions.Item>
                 <Descriptions.Item label="Year">{props.detail.year}年</Descriptions.Item>
                 <Descriptions.Item label="Continent">{props.detail.continents}</Descriptions.Item>
-                <Descriptions.Item label="Description">{props.detail.description}</Descriptions.Item>
+                <Descriptions.Item label="Description">
+                    <div style={{ wordBreak: 'break-all', textAlign: 'left' }}>
+                        {props.detail.description}
+                    </div></Descriptions.Item>
             </Descriptions>
 
             <br />
@@ -39,6 +42,11 @@ function ProductInfo(props) {
                     ♡
                 </Button>
             </div>
+            {/*
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <LikeDislikes movie movieId={movieId} userId={localStorage.getItem('userId')} />
+            </div>
+            */}
         </div>
     )
 }
