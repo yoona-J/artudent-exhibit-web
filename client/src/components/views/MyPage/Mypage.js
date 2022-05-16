@@ -1,18 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useSelector } from 'react-redux'
 import { Button } from 'antd'
 
-function Mypage() {
+function Mypage(props) {
 
     // console.log('userId', userId)
-    const users = useSelector(state => state.user.userData)
-    console.log('users', users)
-
-    console.log('ii=', users)
+    const users = props.user.userData
+    const [Users, setUsers] = useState({})
 
     const MyUploadPage = () => {
         window.location.href = `/mypage/${users._id}`
     }
+    console.log('users', users)
+    console.log(Users)
+  
 
     return (
         <div
@@ -25,9 +26,8 @@ function Mypage() {
                 }}>
                 <h2>MyPage</h2>
                 
-                
             <Button onClick={MyUploadPage}>button</Button>
-                    
+
             </div>
         </div>
     )

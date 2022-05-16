@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import axios from "axios";
 
 
@@ -7,23 +7,23 @@ function MyUpload(props) {
 
     const userId = props.match.params.userId
     console.log('userId=', userId)
-    const uploadId = props
-    console.log('upload=', uploadId)
+    const uploadData = props.user.userData
+    console.log('upload=', uploadData)
 
-    useEffect(() => {
-      axios.get(`/api/product/products_by_id?id=${userId}&type=array`)
-        .then(response => {
-          console.log('res=', response)
-        })
-    })
+    
 
-    // if (props.user.userData.userId === ) {
-
-    // }
     
   return (
-    <div>
-        hi
+    <div
+            style={{
+                width: '60%',
+                margin: '3rem auto'
+            }}>
+            <div style={{
+                    textAlign: 'center'
+                }}>
+                <h2>MyPage</h2>
+            </div>
     </div>
   )
 }
