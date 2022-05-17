@@ -105,7 +105,7 @@ function UploadProductPage(props) {
         if (Continent.length > 1) {
             return alert("한개의 태그를 입력해주세요.")
         }
-        if (PersonalInfo == false) {
+        if (PersonalInfo === false) {
             return alert("개인정보이용에 동의하지 않으시면 게시물을 업로드하실 수 없습니다.")
         }
 
@@ -149,6 +149,7 @@ function UploadProductPage(props) {
         <div>
             <img
                 src={Upload}
+                alt='img'
                 style={{
                     position: 'absolute',
                     width: '100%',

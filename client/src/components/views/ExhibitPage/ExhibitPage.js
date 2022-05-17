@@ -1,10 +1,8 @@
-import React, { useState } from 'react'
-// import axios from "axios";
-import SubscribeButton from '../MainPage/img/subscribeButton.png'
+import React from 'react';
+import SubscribeButton from '../MainPage/img/subscribeButton.png';
 import {BackTop, Divider, Card, Col, Row} from 'antd';
-import ExhibitionImage from './img/exhibitImg.jpg'
+import ExhibitionImage from './img/exhibitImg.jpg';
 import Exhibition from './img/Background.png';
-import Opacity from './img/opacity.png';
 
 const {Meta} = Card;
 
@@ -24,7 +22,7 @@ function ExhibitPage() {
 
     return (
         <div>
-            <img src={Exhibition} style={{position: 'absolute', width: '100%', height: '560px', top: '50px', zIndex: 1}}></img>
+            <img src={Exhibition} alt='img' style={{position: 'absolute', width: '100%', height: '560px', top: '50px', zIndex: 1}}></img>
         <div
             style={{
                 width: '60%',
@@ -248,6 +246,7 @@ function ExhibitPage() {
                 <div>
                 <img
                     src={SubscribeButton}
+                    alt='img'
                     style={{
                         // display: 'flex',
                         textAlign: 'center',

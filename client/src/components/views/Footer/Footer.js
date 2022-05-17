@@ -19,7 +19,8 @@ function Footer() {
                     float: 'left',
                     margin: '45px'
                 }}
-                src={Logo}></img>
+                src={Logo}
+                alt='img'></img>
 
             <div
                 style={{

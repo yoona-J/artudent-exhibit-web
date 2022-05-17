@@ -9,12 +9,6 @@ const {Meta} = Card;
 
 function MainPage() {
 
-    // const ExhibitionImgCard = () => {     return <Col lg={8} md={12} xs={24}>
-    // <Card             hoverable="hoverable"             style={{ width: 240 }}
-    // cover={<img alt = "exhibition3" src = { ExhibitionImage } />}> <Meta
-    // title="this is the test3" description="Jeong Yoona"/>         </Card> </Col>
-    // }
-
     return (
         <div
             style={{
@@ -26,6 +20,7 @@ function MainPage() {
                 }}>
                 <img
                     src={MainImage}
+                    alt='img'
                     style={{
                         width: '100%',
                         padding: '80px 0px 80px 0px'
@@ -107,6 +102,7 @@ function MainPage() {
                 </a>
                 <img
                     src={SubscribeButton}
+                    alt='img'
                     style={{
                         width: '45%',
                         padding: '100px 0px 20px 0px'

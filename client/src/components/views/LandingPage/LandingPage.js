@@ -153,6 +153,7 @@ function LandingPage() {
         <div>
             <img
                 src={Artwork}
+                alt='img'
                 style={{
                     position: 'absolute',
                     width: '100%',
@@ -258,6 +259,7 @@ function LandingPage() {
                     }}>
                     <img
                         src={SubscribeButton}
+                        alt='img'
                         style={{
                             width: '45%',
                             padding: '100px 0px 20px 0px'

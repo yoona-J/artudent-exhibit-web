@@ -42,8 +42,9 @@ function Comments(props) {
         {/* Comment Lists */}
         
         {props.CommentLists && props.CommentLists.map((comment, index) => (
+                (!comment.responseTo &&
                 <SingleComment key={index} postId={props.postId} comment={comment} />
-            ))}
+            )))}
         {/* {
             props.CommentLists.filter(cmt => !(cmt.responseTo)).map((cmt, idx) => {
                 // console.log(`>>`, cmt)

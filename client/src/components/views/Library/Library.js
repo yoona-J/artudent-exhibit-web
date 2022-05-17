@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { getLibItems, removeLibItem } from '../../../_actions/user_actions'
 import UserCardBlock from './Sections/UserCardBlock';
-import { Empty } from 'antd'
 import LibraryImg from './img/library.png'
 
 function Library(props) {
@@ -41,14 +40,16 @@ function Library(props) {
 
   return (
     <div>
-        <img src={LibraryImg}
-            style={{
-                position: 'absolute',
-                width: '100%',
-                height: '560px',
-                top: '50px',
-                zIndex: 1
-            }}
+        <img 
+        src={LibraryImg}
+        alt='img'
+        style={{
+            position: 'absolute',
+            width: '100%',
+            height: '560px',
+            top: '50px',
+            zIndex: 1
+        }}
         >
         </img>
         <div style={{ position: 'relative', width: '70%', margin: '3rem auto', textAlign: 'center', zIndex: 10}}>
