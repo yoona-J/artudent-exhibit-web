@@ -17,6 +17,8 @@ function ProductInfo(props) {
             alert('라이브러리에 저장되었습니다.')
         }
     }
+
+    console.log(props)
     
     return (
         <div style={{ width: '100%' }}>
@@ -38,8 +40,8 @@ function ProductInfo(props) {
             <br />
 
             <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <Button size='large' shape='round' type='danger' onClick={clickHandler}>
-                    ♡
+                <Button size='large' shape='round' onClick={clickHandler} style={{borderColor: 'red', color: 'red'}}>
+                    Add
                 </Button>
             </div>
         </div>

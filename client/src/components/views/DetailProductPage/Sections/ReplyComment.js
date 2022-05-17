@@ -3,7 +3,7 @@ import SingleComment from './SingleComment'
 
 function ReplyComment(props) {
 
-    console.log('>>>>>>>>', props);
+    // console.log('>>>>>>>>', props);
 
     const [ChildCommentNumber, setChildCommentNumber] = useState(0)
     const [OpenReplyComments, setOpenReplyComments] = useState(false)

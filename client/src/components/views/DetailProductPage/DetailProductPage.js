@@ -4,6 +4,7 @@ import ProductImage from './Sections/ProductImage'
 import ProductInfo from './Sections/ProductInfo'
 import Comment from './Sections/Comment'
 import { Row, Col } from 'antd'
+import Favorite from './Sections/Favorite'
 
 function DetailProductPage(props) {
 
@@ -30,7 +31,7 @@ function DetailProductPage(props) {
       Axios.post('/api/comment/getComments', Variable)
         .then(response => {
             if(response.data.success){
-                console.log('comments', response.data.comments)
+                // console.log('comments', response.data.comments)
                 setCommentLists(response.data.comments)
             }else{
                 alert('코멘트 정보를 가져오는 것을 실패 하였습니다.')
@@ -59,6 +60,10 @@ function DetailProductPage(props) {
           {/* productInfo */}
 
           <ProductInfo detail={Product}/>
+
+          {/* Favorite */}
+
+          <Favorite productInfo={Product} productId={productId} userFrom={localStorage.getItem('userId')}/>
 
         </Col>
       </Row>
