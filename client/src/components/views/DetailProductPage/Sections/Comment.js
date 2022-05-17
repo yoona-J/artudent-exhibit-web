@@ -3,6 +3,7 @@ import Axios from 'axios';
 import { Button } from 'antd';
 import { useSelector } from 'react-redux';
 import SingleComment from './SingleComment';
+import ReplyComment from './ReplyComment';
 
 function Comments(props) {
     // console.log('2nd>>>>', props)
@@ -15,13 +16,11 @@ function Comments(props) {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        // console.log('>>>>>>>>', props);
         const variables = {
             content: commentValue,
-            writer: user.userData._id ,
+            writer: user.userData._id,
             postId: props.postId,
         }
-        //console.log(variables)
         
         Axios.post('/api/comment/saveComment', variables)
             .then(response => {
@@ -33,8 +32,8 @@ function Comments(props) {
                     alert('커멘트를 저장하지 못했습니다.')
                 }
             })
-    }
-    // console.log('>>>>>', props.CommentLists)
+        }
+
   return (
     <div>
         <br />
@@ -45,7 +44,10 @@ function Comments(props) {
         
         {props.CommentLists && props.CommentLists.map((comment, index) => (
             (!comment.responseTo &&
-            <SingleComment key={index} refreshFunction={props.refreshFunction} postId={props.postId} comment={comment} />
+                <React.Fragment key={index}>
+                    <SingleComment refreshFunction={props.refreshFunction} postId={props.postId} comment={comment} />
+                    <ReplyComment parentCommentId={comment._id} postId={props.postId} CommentLists={props.CommentLists} refreshFunction={props.refreshFunction} />
+                </React.Fragment>
         )))}
         {/* {
             props.CommentLists.filter(cmt => !(cmt.responseTo)).map((cmt, idx) => {
@@ -55,8 +57,8 @@ function Comments(props) {
         } */}
 
         {/* Root Comment Form */}
-
-        <form style= {{ display: 'flex '}} onSubmit={onSubmit} >
+        <hr />
+        <form style= {{ display: 'flex', padding: '20px 0px 0px 0px' }} onSubmit={onSubmit} >
             <textarea
                 style={{ width: '100%', borderRadius: '5px' }}
                 onChange={handleClick}

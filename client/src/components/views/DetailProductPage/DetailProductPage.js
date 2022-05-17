@@ -30,17 +30,13 @@ function DetailProductPage(props) {
       Axios.post('/api/comment/getComments', Variable)
         .then(response => {
             if(response.data.success){
-                // console.log(response.data.comments)
-                //setComments -> setCommentLists으로 변경
+                console.log('comments', response.data.comments)
                 setCommentLists(response.data.comments)
             }else{
                 alert('코멘트 정보를 가져오는 것을 실패 하였습니다.')
             }
         })
     }, []);
-
-    // console.log(Product)
-    
 
 
   return (
@@ -68,7 +64,7 @@ function DetailProductPage(props) {
       </Row>
 
       {/* Comment */}
-      <Comment refreshFunction={refreshFunction} CommentLists={CommentLists} postId={props.postId}/>
+      <Comment refreshFunction={refreshFunction} CommentLists={CommentLists} postId={productId}/>
     </div>
   )
 }

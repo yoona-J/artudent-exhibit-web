@@ -28,7 +28,7 @@ router.post("/saveComment", auth, (req, res) => {
 
 router.post("/getComments", (req, res) => {
 
-    Comment.find({ "postId" : req.body._id })
+    Comment.find({ "postId" : req.body.productId })
         .populate('writer')
         .exec((err, comments) => {
             if (err) return res.status(400).send(err)

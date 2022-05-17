@@ -42,11 +42,6 @@ function ProductInfo(props) {
                     ♡
                 </Button>
             </div>
-            {/*
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-                <LikeDislikes movie movieId={movieId} userId={localStorage.getItem('userId')} />
-            </div>
-            */}
         </div>
     )
 }

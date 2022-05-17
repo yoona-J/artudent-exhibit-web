@@ -2,11 +2,12 @@ import React, {useState} from 'react'
 import { Comment, Avatar, Button, Input } from 'antd';
 import { useSelector } from 'react-redux';
 import Axios from 'axios';
+// import { DeleteOutlined } from '@ant-design/icons';
 
 const { TextArea } = Input;
 
 function SingleComment(props) {
-    // console.log(props)
+    // console.log('>>>>>>>>', props.postId);
     const user = useSelector(state => state.user);
 
     const [OpenReply, setOpenReply] = useState(false)
@@ -15,6 +16,25 @@ function SingleComment(props) {
     const onClickOpenReply = () => {
         setOpenReply(!OpenReply)
     }
+
+    // const onDeleteComment = (targetedCommentId) => {
+    //     let confirmRes = window.confirm('정말 이 댓글을 삭제하시겠습니까?')
+
+    //     if (confirmRes) {
+    //         const variables = {
+    //             commentId: targetedCommentId
+    //         }
+
+    //         Axios.post('', variables)
+    //             .then(response => {
+    //                 if (response.data.success) {
+    //                     props.refreshDeleteFunction(response.data.deleteCommentId)
+    //                 } else {
+    //                     alert('댓글 지우기를 실패했습니다.')
+    //                 }
+    //             })
+    //     }
+    // }
 
     const handleChange = (event) => {
         setCommentValue(event.currentTarget.value)
@@ -26,21 +46,19 @@ function SingleComment(props) {
 
         const variables = {
             content: CommentValue,
-            writer: user.userData._id ,
+            writer: user.userData._id,
             postId: props.postId,
             responseTo: props.comment._id,
         }
 
-        console.log(props)
-
         Axios.post('/api/comment/saveComment', variables)
         .then(response => {
             if (response.data.success) {
-                // setOpenReply(!OpenReply)
+                setOpenReply(!OpenReply)
                 props.refreshFunction(response.data.result)
                 setCommentValue("")
             } else {
-                alert('Failed to save Comment')
+                alert('로그인 후 댓글 작성이 가능합니다.')
             }
         })
 
@@ -48,29 +66,32 @@ function SingleComment(props) {
 
     // 대댓글 나오게 하는 기능
     const actions = [
-        <span onClick={onClickOpenReply} key="comment-basic-reply-to">Reply to</span>
+        <>
+            <span onClick={onClickOpenReply} key="comment-basic-reply-to">Reply to</span>
+            {/* <span onClick={ () => onDeleteComment (props.comment._id) }><DeleteOutlined /></span> */}
+        </>
     ]
     // console.log('>>>>', props)
+    
 
      return (
         <div>
-
-                <Comment
-                    actions={actions}
-                    author={props.comment.writer.name}
-                    avatar={
-                        <Avatar
-                            src={props.comment.writer.image}
-                            alt="image"
-                        />
-                    }
-                    content={
-                        <p>
-                            {props.comment.content}
-                        </p>
-                    }
-                ></Comment>
-            
+            <Comment
+                actions={actions}
+                author={props.comment.writer.name}
+                avatar={
+                    <Avatar
+                        src={props.comment.writer.image}
+                        alt="image"
+                    />
+                }
+                content={
+                    <p>
+                        {props.comment.content}
+                    </p>
+                }
+            ></Comment>
+        
             {OpenReply &&
                 <form style={{ display: 'flex' }} onSubmit={onSubmit}>
                     <TextArea
@@ -83,7 +104,7 @@ function SingleComment(props) {
                     <Button style={{ width: '20%', height: '52px' }} onClick={onSubmit} >Submit</Button>
                 </form>
             }
-    </div>
+        </div>
   )
 }
 
