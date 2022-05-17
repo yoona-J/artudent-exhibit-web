@@ -36,9 +36,9 @@ function SingleComment(props) {
         Axios.post('/api/comment/saveComment', variables)
         .then(response => {
             if (response.data.success) {
-                setCommentValue("")
-                setOpenReply(!OpenReply)
+                // setOpenReply(!OpenReply)
                 props.refreshFunction(response.data.result)
+                setCommentValue("")
             } else {
                 alert('Failed to save Comment')
             }

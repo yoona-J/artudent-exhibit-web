@@ -15,7 +15,7 @@ function Comments(props) {
 
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log('>>>>>>>>', props);
+        // console.log('>>>>>>>>', props);
         const variables = {
             content: commentValue,
             writer: user.userData._id ,
@@ -26,9 +26,11 @@ function Comments(props) {
         Axios.post('/api/comment/saveComment', variables)
             .then(response => {
                 if(response.data.success){
+                    setcommentValue("")
+                    props.refreshFunction(response.data.result)
                     console.log(response.data.result)
                 }else {
-                    alert( '커멘트를 저장하지 못했습니다.')
+                    alert('커멘트를 저장하지 못했습니다.')
                 }
             })
     }
@@ -42,9 +44,9 @@ function Comments(props) {
         {/* Comment Lists */}
         
         {props.CommentLists && props.CommentLists.map((comment, index) => (
-                (!comment.responseTo &&
-                <SingleComment key={index} postId={props.postId} comment={comment} />
-            )))}
+            (!comment.responseTo &&
+            <SingleComment key={index} refreshFunction={props.refreshFunction} postId={props.postId} comment={comment} />
+        )))}
         {/* {
             props.CommentLists.filter(cmt => !(cmt.responseTo)).map((cmt, idx) => {
                 // console.log(`>>`, cmt)

@@ -12,7 +12,10 @@ function DetailProductPage(props) {
     const [CommentLists, setCommentLists] = useState([])
     const Variable = {
       productId: productId,
-  }
+    }
+    const refreshFunction = (newComment) => {
+      setCommentLists(CommentLists.concat(newComment))
+    }
 
     useEffect(() => {
       Axios.get(`/api/product/products_by_id?id=${productId}&type=single`)
@@ -65,7 +68,7 @@ function DetailProductPage(props) {
       </Row>
 
       {/* Comment */}
-      <Comment CommentLists={CommentLists} postId={productId}/>
+      <Comment refreshFunction={refreshFunction} CommentLists={CommentLists} postId={props.postId}/>
     </div>
   )
 }
