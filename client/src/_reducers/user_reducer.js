@@ -6,11 +6,11 @@ import {
     ADD_TO_LIB,
     GET_LIB_ITEMS,
     REMOVE_LIB_ITEM,
-    GET_UPLOAD_ITEMS,
+    // REMOVE_PRO_ITEM,
 } from '../_actions/types';
  
 
-export default function(state={},action){
+export default function(state={}, action){
     switch(action.type){
         case REGISTER_USER:
             return {...state, register: action.payload }
@@ -26,8 +26,8 @@ export default function(state={},action){
             return {...state, libDetail: action.payload }
         case REMOVE_LIB_ITEM:
             return {...state, libDetail: action.payload.productInfo, userData: { ...state.userData, library: action.payload.library } }  
-        case GET_UPLOAD_ITEMS:
-            return {...state, uploadDetail: action.payload }
+        // case REMOVE_PRO_ITEM:
+        //     return {...state, product: action.payload.product, userData: {...state.userData}}
         default:
             return state;
     }

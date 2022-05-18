@@ -18,11 +18,11 @@ function ProductInfo(props) {
         }
     }
 
-    console.log(props)
+    console.log('>>>>>', props)
     
     return (
         <div style={{ width: '100%' }}>
-            <Descriptions title="Work Info." bordered="bordered">
+            <Descriptions title="" bordered="bordered">
                 <Descriptions.Item label="Title">{props.detail.title}</Descriptions.Item>
                 <Descriptions.Item label="Artist">{props.detail.artist}</Descriptions.Item>
                 <Descriptions.Item label="Technique">{props.detail.tech}</Descriptions.Item>

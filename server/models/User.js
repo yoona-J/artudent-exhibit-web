@@ -18,10 +18,6 @@ const userSchema = mongoose.Schema({
         type: String,
         minglength: 5
     },
-    lastname: {
-        type:String,
-        maxlength: 50
-    },
     role : {
         type:Number,
         default: 0 
@@ -46,7 +42,7 @@ const userSchema = mongoose.Schema({
     department : {
         type: String,
     },
-    nickName : {
+    nickname : {
         type: String,
     },
     sns : {
@@ -56,10 +52,6 @@ const userSchema = mongoose.Schema({
         type: String
     },
     library: {
-        type: Array,
-        default: []
-    },
-    upload: {
         type: Array,
         default: []
     },

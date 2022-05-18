@@ -21,10 +21,10 @@ router.get("/auth", auth, (req, res) => {
         school: req.user.school,
         college: req.user.college,
         department: req.user.department,
+        nickname: req.user.nickname,
         sns: req.user.sns,
         career: req.user.career,
         library: req.user.library,
-        upload: req.user.upload,
     });
 });
 

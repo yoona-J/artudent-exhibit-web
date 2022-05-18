@@ -100,13 +100,16 @@ function MainPage() {
                         }}>More Exhibition
                         <CaretRightOutlined/></h5>
                 </a>
-                <img
-                    src={SubscribeButton}
-                    alt='img'
-                    style={{
-                        width: '45%',
-                        padding: '100px 0px 20px 0px'
-                    }}></img>
+                <a href='https://docs.google.com/forms/d/e/1FAIpQLSfFiOe9JIQNa3T70rDAB0herC2U88NSmGJ7I_NHc1XP24iXag/viewform'>
+                    <img
+                        src={SubscribeButton}
+                        alt='img'
+                        style={{
+                            width: '45%',
+                            padding: '100px 0px 20px 0px'
+                        }}>
+                    </img>
+                </a>
                 <h5
                     style={{
                         padding: '0px 0px 100px 0px'

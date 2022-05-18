@@ -2,9 +2,10 @@ import React from 'react'
 import './UserCardBlock.css'
 
 function UserCardBlock(props) {
-    console.log('props', props)
+    // console.log('props', props)
     const renderItems = () => (
         props.products && props.products.map((product, index) => (
+            // console.log(product)
             <tr key={index}>
                 <td>
                     <a href={`/product/${product._id}`}>{product.title}</a>

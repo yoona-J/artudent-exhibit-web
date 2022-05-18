@@ -30,7 +30,9 @@ function Footer() {
                     margin: '30px'
                 }}>
                 <p>고객 문의</p>
-                <p>About Artudent</p>
+                <a href='https://artudent.creatorlink.net/ABOUT' style={{color: 'black'}}>
+                    <p>About Artudent</p>
+                </a>
                 <Icon type="copyright"></Icon>
                 COPYRIGHT ALL RIGHT RESERVED
             </div>

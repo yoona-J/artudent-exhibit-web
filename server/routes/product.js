@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const multer = require('multer');
 const { Product } = require('../models/Product');
-const { User } = require('../models/User')
 
 //=================================
 //             Product
@@ -125,5 +124,28 @@ router.get('/products_by_id', (req, res) => {
     })
 
 })
+
+router.get('/products_by_user', (req, res) => {
+  // console.log('>>>>>>', req.query)
+  let userId = req.query.id
+  // console.log('user', userId)
+  Product.find({ writer: { $in: userId } })
+    .populate('_id')
+    .exec((err, product) => {
+      // console.log('this', product)
+      if(err) return res.status(400).send(err)
+      return res.status(200).send(product)
+    })
+
+})
+
+// router.get('/removeFromPro', (req, res) => {
+//   Product.findOneAndUpdate(
+//     // console.log('req', req.query.id)
+//     { id: req.query.id },
+//     { "$pull": { ""}}
+
+//   )
+// })
 
 module.exports = router;

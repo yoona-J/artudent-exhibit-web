@@ -46,10 +46,15 @@ function DetailProductPage(props) {
         <h1>{Product.title}</h1>
       </div>
 
+      {/* Favorite */}
+      <div style={{display: 'flex', justifyContent: 'right'}}>
+          <Favorite productInfo={Product} productId={productId} userFrom={localStorage.getItem('userId')}/>
+      </div>
+
       <br />
       <Row gutter={[16, 16]}>
         <Col lg={12} sm={24}>
-        
+          
           {/* product image */}
 
           <ProductImage detail={Product} />
@@ -60,10 +65,6 @@ function DetailProductPage(props) {
           {/* productInfo */}
 
           <ProductInfo detail={Product}/>
-
-          {/* Favorite */}
-
-          <Favorite productInfo={Product} productId={productId} userFrom={localStorage.getItem('userId')}/>
 
         </Col>
       </Row>

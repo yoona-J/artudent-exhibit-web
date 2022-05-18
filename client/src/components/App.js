@@ -37,7 +37,6 @@ function App() {
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/product/upload" component={Auth(UploadProductPage, true)} />
           <Route exact path="/mypage" component={Auth(MyPage, true)} />
-          <Route exact path="/mypage/:userId" component={Auth(MyUpload, true)} />
           <Route exact path="/service" component={Auth(ServiceCenter, null)} />
 
           {/* ArtworkDetailPage */}

@@ -1,27 +1,40 @@
 import React from 'react'
-
+import '../../Library/Sections/UserCardBlock.css'
 
 function MyUpload(props) {
+  console.log(props)
 
-    const userId = props.match.params.userId
-    console.log('userId=', userId)
-    const uploadData = props.user.userData
-    console.log('upload=', uploadData)
+  const renderItems = () => (
+    props.product && props.product.map((Product, idx) => (
+      // console.log('Product', Product)
+      <tr key={idx}>
+          <td>
+              <a href={`/product/${Product._id._id}`}>{Product.title}</a>
+          </td>
+          <td>
+              {Product.artist}
+          </td>
+          {/* <td>
+              <button onClick={() => props.removeItem(Product._id)}>remove</button>
+          </td> */}
+      </tr>
+    ))
+  )
 
-    
-
-    
   return (
-    <div
-            style={{
-                width: '60%',
-                margin: '3rem auto'
-            }}>
-            <div style={{
-                    textAlign: 'center'
-                }}>
-                <h2>MyPage</h2>
-            </div>
+    <div>
+      <table>
+            <thead>
+                <tr style={{ textAlign: 'center' }}>
+                    <th>Title</th>
+                    <th>Artist</th>
+                    {/* <th>Remove</th> */}
+                </tr>
+            </thead>
+            <tbody>
+                {renderItems()}
+            </tbody>
+        </table>
     </div>
   )
 }
