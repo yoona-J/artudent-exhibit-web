@@ -333,11 +333,6 @@ function UploadProductPage(props) {
                     </div>
 
                     <Select
-                        mode="multiple"
-                        allowClear
-                        style={{ width: '100%' }}
-                        placeholder="한가지만 선택해주세요."
-                        defaultValue={[]}
                         onChange={continentChangeHandler}
                         value={Continent}
                         >

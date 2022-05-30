@@ -22,7 +22,7 @@ function MyUpload(props) {
   )
 
   return (
-    <div>
+    <div style={{ marginBottom: '50px'}}>
       <table>
             <thead>
                 <tr style={{ textAlign: 'center' }}>
