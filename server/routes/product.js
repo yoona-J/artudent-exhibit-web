@@ -132,20 +132,30 @@ router.get('/products_by_user', (req, res) => {
   Product.find({ writer: { $in: userId } })
     .populate('_id')
     .exec((err, product) => {
-      // console.log('this', product)
+      console.log('this', product)
       if(err) return res.status(400).send(err)
       return res.status(200).send(product)
     })
 
 })
 
-// router.get('/removeFromPro', (req, res) => {
-//   Product.findOneAndUpdate(
-//     // console.log('req', req.query.id)
-//     { id: req.query.id },
-//     { "$pull": { ""}}
-
-//   )
-// })
+router.get('/removeFromPro', (req, res) => {
+  //먼저 product db 안에 내가 지우려고 하는 id 값을 가져온다.
+  // console.log('req', req.product)
+  Product.findOneAndUpdate(
+    // console.log('req', req.query.id)
+    { id: req.query.id },
+    { "$pull": { "product": { id: req.query.id } }},
+    (err, product) => {
+      // let pro = product.id;
+      // let products = product.map(item => {
+      //   console.log(item)
+      //   return item.id
+      // })
+      console.log('pro', product)
+    }
+  //product 에서 현재 남아 있는 상품 정보들을 가져오기
+  )
+})
 
 module.exports = router;

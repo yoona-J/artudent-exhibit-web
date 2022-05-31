@@ -7,7 +7,7 @@ import {
     ADD_TO_LIB,
     GET_LIB_ITEMS,
     REMOVE_LIB_ITEM,
-    // REMOVE_PRO_ITEM,
+    REMOVE_PRO_ITEM,
 } from './types';
 import { USER_SERVER } from '../components/Config.js';
 
@@ -112,16 +112,17 @@ export function removeLibItem(productId){
 }
 
 
-// export function removeProItem(productId){
+export function removeProItem(productId){
     
-//     const request = Axios.get(`/api/product/removeFromPro?id=${productId}`)
-//         .then(response => {
-//             console.log('res', response)
-//         });
+    const request = Axios.get(`/api/product/removeFromPro?id=${productId}`)
+        .then(response => {
+            console.log('res', response)
+            return response.data;
+        });
 
-//     return {
-//         type: REMOVE_PRO_ITEM,
-//         payload: request
-//     }
-// }
+    return {
+        type: REMOVE_PRO_ITEM,
+        payload: request
+    }
+}
 

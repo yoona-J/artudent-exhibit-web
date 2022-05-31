@@ -14,9 +14,9 @@ function MyUpload(props) {
           <td>
               {Product.artist}
           </td>
-          {/* <td>
+          <td>
               <button onClick={() => props.removeItem(Product._id)}>remove</button>
-          </td> */}
+          </td>
       </tr>
     ))
   )
@@ -28,7 +28,7 @@ function MyUpload(props) {
                 <tr style={{ textAlign: 'center' }}>
                     <th>Title</th>
                     <th>Artist</th>
-                    {/* <th>Remove</th> */}
+                    <th>Remove</th>
                 </tr>
             </thead>
             <tbody>

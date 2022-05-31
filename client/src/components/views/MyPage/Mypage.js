@@ -5,7 +5,7 @@ import Axios from 'axios'
 import MyUpload from './MyUpload/MyUpload'
 import FAQ from './FAQ';
 import MyPageImg from './img/MyPage.png'
-// import { removeProItem } from '../../../_actions/user_actions'; 
+import { removeProItem } from '../../../_actions/user_actions'; 
 
 const { TabPane } = Tabs;
 
@@ -39,13 +39,13 @@ function Mypage(props) {
         }
       }, [props.user])
 
-    //   let removeFromPro = (productId) => {
-    //     console.log('productId', productId._id)
+      let removeFromPro = (productId) => {
+        console.log('productId', productId._id)
     
-    //     dispatch(removeProItem(productId._id))
-    //         .then(response => {
-    //         })
-    //   }
+        dispatch(removeProItem(productId._id))
+            .then(response => {
+            })
+      }
 
     //   console.log('UserId', UserId)
       console.log('UserDatas', UserDatas)
@@ -93,7 +93,7 @@ function Mypage(props) {
                         </TabPane>
                         <TabPane tab="내가 올린 게시물" key="2">
                             <MyUpload product={Products} 
-                            // removeItem={removeFromPro} 
+                            removeItem={removeFromPro}
                             />
                         </TabPane>
                     </Tabs>

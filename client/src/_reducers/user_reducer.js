@@ -6,7 +6,7 @@ import {
     ADD_TO_LIB,
     GET_LIB_ITEMS,
     REMOVE_LIB_ITEM,
-    // REMOVE_PRO_ITEM,
+    REMOVE_PRO_ITEM,
 } from '../_actions/types';
  
 
@@ -26,8 +26,8 @@ export default function(state={}, action){
             return {...state, libDetail: action.payload }
         case REMOVE_LIB_ITEM:
             return {...state, libDetail: action.payload.productInfo, userData: { ...state.userData, library: action.payload.library } }  
-        // case REMOVE_PRO_ITEM:
-        //     return {...state, product: action.payload.product, userData: {...state.userData}}
+        case REMOVE_PRO_ITEM:
+            return {...state, product: action.payload.product, userData: {...state.userData}}
         default:
             return state;
     }
