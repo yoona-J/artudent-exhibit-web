@@ -18,7 +18,27 @@ function ProductInfo(props) {
         }
     }
 
-    console.log('>>>>>', props)
+    const continentListData = () => {
+        if (props.detail.continents !== undefined) {
+            if (props.detail.continents === 1) {
+                return <>일러스트</>
+            } else if (props.detail.continents === 2) {
+                return <>도예/조각</>
+            } else if (props.detail.continents === 3) {
+                return <>회화/판화</>
+            } else if (props.detail.continents === 4) {
+                return <>조형</>
+            } else if (props.detail.continents === 5) {
+                return <>가구디자인</>
+            } else if (props.detail.continents === 6) {
+                return <>미디어 아트</>
+            } else if (props.detail.continents === 7) {
+                return <>사진</>
+            }
+        }
+    }
+
+    // console.log('>>>>>', props)
     
     return (
         <div style={{ width: '100%' }}>
@@ -28,7 +48,7 @@ function ProductInfo(props) {
                 <Descriptions.Item label="Technique">{props.detail.tech}</Descriptions.Item>
                 <Descriptions.Item label="Dimemsions">{props.detail.dimensions}</Descriptions.Item>
                 <Descriptions.Item label="Year">{props.detail.year}年</Descriptions.Item>
-                <Descriptions.Item label="Continent">{props.detail.continents}</Descriptions.Item>
+                <Descriptions.Item label="Continent">{continentListData()}</Descriptions.Item>
                 <Descriptions.Item label="Description">
                     <div style={{ wordBreak: 'break-all', textAlign: 'left' }}>
                         {props.detail.description}
