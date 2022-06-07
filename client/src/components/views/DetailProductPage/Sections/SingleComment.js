@@ -80,10 +80,12 @@ function SingleComment(props) {
                 actions={actions}
                 author={props.comment.writer.name}
                 avatar={
-                    <Avatar
+                    <a href='/mypage'>
+                        <Avatar
                         src={props.comment.writer.image}
                         alt="image"
-                    />
+                        />
+                    </a>
                 }
                 content={
                     <p>
