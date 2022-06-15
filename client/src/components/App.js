@@ -2,19 +2,24 @@ import React, { Suspense } from 'react';
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
 // pages for this product
-import LandingPage from "./views/LandingPage/LandingPage.js";
-import LoginPage from "./views/LoginPage/LoginPage.js";
-import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import MainPage from "./views/MainPage/MainPage";
+import LandingPage from "./views/LandingPage/LandingPage.js";
 import ExhibitPage from './views/ExhibitPage/ExhibitPage';
 import LibraryPage from './views/Library/Library';
+
+import LoginPage from "./views/LoginPage/LoginPage.js";
+import RegisterPage from "./views/RegisterPage/RegisterPage.js";
+
 import NavBar from "./views/NavBar/NavBar";
-import Footer from "./views/Footer/Footer"
+import Footer from "./views/Footer/Footer";
+
 import UploadProductPage from './views/UploadProductPage/UploadProductPage';
-import MyPage from './views/MyPage/Mypage';
-import MyUpload from './views/MyPage/MyUpload/MyUpload';
-import ServiceCenter from './views/LoginPage/ServiceCenter';
 import DetailProductPage from './views/DetailProductPage/DetailProductPage';
+
+import MyPage from './views/MyPage/Mypage';
+import ServiceCenter from './views/LoginPage/ServiceCenter';
+
+import ExhibitionAplicationPage from './views/ExhibitionAplicationPage/ExhibitionAplicationPage';
 
 //ExhibitionPage
 // import ExhibitPage1 from './views/ExhibitPage/ExhibitionPages/first.html';
@@ -42,8 +47,8 @@ function App() {
           {/* ArtworkDetailPage */}
           <Route exact path="/product/:productId" component={Auth(DetailProductPage, null)} />
 
-          {/* ExhibitionPage*/}
-          {/* <Route exact path="/exhibition/1" component={Auth(ExhibitPage1, null)} /> */}
+          {/* ExhibitionAplicationPage*/}
+          <Route exact path="/exhibitionaplication" component={Auth(ExhibitionAplicationPage, null)} />
         </Switch>
       </div>
       <Footer />

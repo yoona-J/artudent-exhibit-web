@@ -100,7 +100,7 @@ function MainPage() {
                         }}>More Exhibition
                         <CaretRightOutlined/></h5>
                 </a>
-                <a href='https://docs.google.com/forms/d/e/1FAIpQLSfFiOe9JIQNa3T70rDAB0herC2U88NSmGJ7I_NHc1XP24iXag/viewform'>
+                <a href='/exhibitionaplication'>
                     <img
                         src={SubscribeButton}
                         alt='img'
@@ -114,7 +114,6 @@ function MainPage() {
                     style={{
                         padding: '0px 0px 100px 0px'
                     }}>나만의 온라인 전시회 페이지를 직접 신청해보세요.</h5>
-                {/* <hr style={{width: '100%', padding: '0px', textAlign: 'left'}}></hr> */}
             </div>
         </div>
     )

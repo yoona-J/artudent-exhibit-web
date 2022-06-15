@@ -9,7 +9,8 @@ function Footer() {
                 width: '100%',
                 height: '160px',
                 display: 'block',
-                background: '#7A8095'
+                background: '#7A8095',
+                zIndex: 15
             }}>
 
             <img
