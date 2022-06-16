@@ -1,12 +1,25 @@
 import React, {useState} from 'react'
 import ExhibitApplicationImg from './img/ExhibitApplicationImg.png'
-import {Divider, Button, Modal, Radio, Form} from 'antd'
-// import PrivacyPolicy from './PrivacyPolicy'
+import {
+    Divider,
+    Button,
+    Modal,
+    Radio,
+    Form,
+    Input
+} from 'antd'
 
 function ExhibitionAplicationPage() {
 
     const [IsModal, setIsModal] = useState(false)
-    const [PersonalInfo, setPersonalInfo] = useState(true)
+    const [PolicyChecked, setPolicyChecked] = useState(true)
+    const [MarketingChecked, setMarketingChecked] = useState(true)
+    const [TypeChecked, setTypeChecked] = useState("");
+
+    const [Name, setName] = useState("");
+    const [Call, setCall] = useState("");
+    const [Mail, setMail] = useState("");
+    const [Nickname, setNickname] = useState("")
 
     //모두 다 모달창
     const showModal = () => {
@@ -21,13 +34,39 @@ function ExhibitionAplicationPage() {
         setIsModal(false);
     };
 
-    const PolicyCheckedHandler = (event) => {
-        setPersonalInfo(event.target.value)
+    const policyCheckedHandler = (event) => {
+        setPolicyChecked(event.target.value)
+    }
+
+    const marketingCheckedHandler = (event) => {
+        setMarketingChecked(event.target.value)
+    }
+
+    const typeCheckedHandler = (e) => {
+        setTypeChecked(e.target.value);
+    };
+
+    //Input
+
+    const nameChangeHandler = (event) => {
+        setName(event.target.value)
+    }
+
+    const callChangeHandler = (event) => {
+        setCall(event.target.value)
+    }
+
+    const mailChangeHandler = (event) => {
+        setMail(event.target.value)
+    }
+
+    const nicknameChangeHandler = (event) => {
+        setNickname(event.target.value)
     }
 
     return (
         <div style={{
-                height: '1000px'
+                height: '2000px'
             }}>
             <img
                 src={ExhibitApplicationImg}
@@ -52,7 +91,7 @@ function ExhibitionAplicationPage() {
                     }}>
                     <h1
                         style={{
-                            padding: '50px 0px 0px 0px',
+                            padding: '70px 0px 0px 0px',
                             color: '#FFF',
                             fontSize: '25px'
                         }}>온라인 전시 신청하기</h1>
@@ -77,7 +116,8 @@ function ExhibitionAplicationPage() {
                                 borderRadius: '3px',
                                 float: 'left',
                                 background: '#fff',
-                                textAlign: 'center'
+                                textAlign: 'center',
+                                marginTop: '90px'
                             }}>
                             <p
                                 style={{
@@ -271,8 +311,8 @@ function ExhibitionAplicationPage() {
                                         float: 'left'
                                     }}>개인 정보 수집 및 이용 동의</p>
                                 <Radio.Group
-                                    onChange={PolicyCheckedHandler}
-                                    value={PersonalInfo}
+                                    onChange={policyCheckedHandler}
+                                    value={PolicyChecked}
                                     style={{
                                         float: 'right'
                                     }}>
@@ -297,7 +337,8 @@ function ExhibitionAplicationPage() {
                                 borderRadius: '3px',
                                 float: 'right',
                                 background: '#fff',
-                                textAlign: 'center'
+                                textAlign: 'center',
+                                marginTop: '90px'
                             }}>
                             <p
                                 style={{
@@ -354,8 +395,8 @@ function ExhibitionAplicationPage() {
                                         float: 'left'
                                     }}>개인 정보 수집 및 이용 동의</p>
                                 <Radio.Group
-                                    onChange={PolicyCheckedHandler}
-                                    value={PersonalInfo}
+                                    onChange={marketingCheckedHandler}
+                                    value={MarketingChecked}
                                     style={{
                                         float: 'right'
                                     }}>
@@ -373,13 +414,13 @@ function ExhibitionAplicationPage() {
                             </div>
                         </div>
                     </div>
-                    <br />
+                    <br/>
                     <div>
                         <h5
                             style={{
-                                padding: '50px 0px 0px 0px',
-                                color: '#FFF',
-                                fontSize: '25px',
+                                padding: '180px 0px 0px 0px',
+                                color: '#000',
+                                fontSize: '20px',
                                 textAlign: 'center',
                                 marginTop: '50px'
                             }}>전시 신청 종류</h5>
@@ -389,6 +430,186 @@ function ExhibitionAplicationPage() {
                                 margin: '1rem auto'
                             }}>
                             <Divider/>
+                        </div>
+                        <div
+                            style={{
+                                textAlign: 'center'
+                            }}>
+                            <Radio.Group onChange={typeCheckedHandler} value={TypeChecked}>
+                                <Radio value={true}>개인</Radio>
+                                <Radio value={false}>단체</Radio>
+                            </Radio.Group>
+                        </div>
+                        <div
+                            style={{
+                                display: 'inline-block',
+                                width: '100%'
+                            }}>
+                            <div
+                                style={{
+                                    float: 'left',
+                                    width: '50%'
+                                }}>
+                                <h3
+                                    style={{
+                                        fontSize: '18px',
+                                        textDecoration: 'underline',
+                                        textUnderlinePosition: 'under',
+                                        marginTop: '40px'
+                                    }}>개인 정보</h3>
+                                <div>
+                                    <h3
+                                        style={{
+                                            textDecoration: 'underline',
+                                            textUnderlinePosition: 'under',
+                                            marginTop: '40px'
+                                        }}>이름</h3>
+                                    <Input
+                                        placeholder="필수 입력란"
+                                        onChange={nameChangeHandler}
+                                        value={Name}
+                                        style={{
+                                            boxShadow: '5px 5px 25px 10px #e5e5e5',
+                                            height: '60px',
+                                            width: '80%'
+                                        }}/>
+                                </div>
+                                <div>
+                                    <h3
+                                        style={{
+                                            textDecoration: 'underline',
+                                            textUnderlinePosition: 'under',
+                                            marginTop: '20px'
+                                        }}>연락처</h3>
+                                    <Input
+                                        placeholder="필수 입력란"
+                                        type='number'
+                                        onChange={callChangeHandler}
+                                        value={Call}
+                                        style={{
+                                            boxShadow: '5px 5px 25px 10px #e5e5e5',
+                                            height: '60px',
+                                            width: '80%'
+                                        }}/>
+                                </div>
+                                <div>
+                                    <h3
+                                        style={{
+                                            textDecoration: 'underline',
+                                            textUnderlinePosition: 'under',
+                                            marginTop: '20px'
+                                        }}>E-Mail</h3>
+                                    <Input
+                                        placeholder="필수 입력란"
+                                        onChange={mailChangeHandler}
+                                        value={Mail}
+                                        style={{
+                                            boxShadow: '5px 5px 25px 10px #e5e5e5',
+                                            height: '60px',
+                                            width: '80%'
+                                        }}/>
+                                </div>
+                                <div>
+                                    <h3
+                                        style={{
+                                            textDecoration: 'underline',
+                                            textUnderlinePosition: 'under',
+                                            marginTop: '20px'
+                                        }}>작가 및 단체명</h3>
+                                    <Input
+                                        placeholder="필수 입력란"
+                                        onChange={nicknameChangeHandler}
+                                        value={Nickname}
+                                        style={{
+                                            boxShadow: '5px 5px 25px 10px #e5e5e5',
+                                            height: '60px',
+                                            width: '80%'
+                                        }}/>
+                                </div>
+                            </div>
+                            <div
+                                style={{
+                                    float: 'right',
+                                    width: '50%',
+                                    paddingLeft: '50px'
+                                }}>
+                                <h3
+                                    style={{
+                                        fontSize: '18px',
+                                        textDecoration: 'underline',
+                                        textUnderlinePosition: 'under',
+                                        marginTop: '40px'
+                                    }}>세부 요청 사항</h3>
+                                <div>
+                                    <h3
+                                        style={{
+                                            textDecoration: 'underline',
+                                            textUnderlinePosition: 'under',
+                                            marginTop: '40px'
+                                        }}>이름</h3>
+                                    <Input
+                                        placeholder="필수 입력란"
+                                        onChange={nameChangeHandler}
+                                        value={Name}
+                                        style={{
+                                            boxShadow: '5px 5px 25px 10px #e5e5e5',
+                                            height: '60px',
+                                            width: '90%'
+                                        }}/>
+                                </div>
+                                <div>
+                                    <h3
+                                        style={{
+                                            textDecoration: 'underline',
+                                            textUnderlinePosition: 'under',
+                                            marginTop: '20px'
+                                        }}>연락처</h3>
+                                    <Input
+                                        placeholder="필수 입력란"
+                                        type='number'
+                                        onChange={callChangeHandler}
+                                        value={Call}
+                                        style={{
+                                            boxShadow: '5px 5px 25px 10px #e5e5e5',
+                                            height: '60px',
+                                            width: '90%'
+                                        }}/>
+                                </div>
+                                <div>
+                                    <h3
+                                        style={{
+                                            textDecoration: 'underline',
+                                            textUnderlinePosition: 'under',
+                                            marginTop: '20px'
+                                        }}>E-Mail</h3>
+                                    <Input
+                                        placeholder="필수 입력란"
+                                        onChange={mailChangeHandler}
+                                        value={Mail}
+                                        style={{
+                                            boxShadow: '5px 5px 25px 10px #e5e5e5',
+                                            height: '60px',
+                                            width: '90%'
+                                        }}/>
+                                </div>
+                                <div>
+                                    <h3
+                                        style={{
+                                            textDecoration: 'underline',
+                                            textUnderlinePosition: 'under',
+                                            marginTop: '20px'
+                                        }}>작가 및 단체명</h3>
+                                    <Input
+                                        placeholder="필수 입력란"
+                                        onChange={nicknameChangeHandler}
+                                        value={Nickname}
+                                        style={{
+                                            boxShadow: '5px 5px 25px 10px #e5e5e5',
+                                            height: '60px',
+                                            width: '90%'
+                                        }}/>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </Form>
