@@ -6,10 +6,15 @@ import {
     Modal,
     Radio,
     Form,
-    Input
+    Input,
+    Select
 } from 'antd'
+import axios from 'axios';
 
-function ExhibitionAplicationPage() {
+const {Option} = Select;
+
+
+function ExhibitionAplicationPage(props) {
 
     const [IsModal, setIsModal] = useState(false)
     const [PolicyChecked, setPolicyChecked] = useState(true)
@@ -20,6 +25,10 @@ function ExhibitionAplicationPage() {
     const [Call, setCall] = useState("");
     const [Mail, setMail] = useState("");
     const [Nickname, setNickname] = useState("")
+    const [Piece, setPiece] = useState("")
+    const [Member, setMember] = useState("")
+    const [Continent, setContinent] = useState("")
+    const [Design, setDesign] = useState("")
 
     //모두 다 모달창
     const showModal = () => {
@@ -64,9 +73,77 @@ function ExhibitionAplicationPage() {
         setNickname(event.target.value)
     }
 
+    const pieceChangeHandler = (event) => {
+        setPiece(event.target.value)
+    }
+
+    const memberChangeHandler = (event) => {
+        setMember(event.target.value)
+    }
+
+    const continentChangeHandler = (event) => {
+        setContinent(event.target.value)
+    }
+
+    const selectHandleChange = (value) => {
+        setDesign(value)
+    }
+
+    const submitHandler = (event) => {
+        //페이지 리프레시 방지
+        event.preventDefault();
+        //모든 state가 채워지지 않으면 리턴되지 않도록 함
+        if (!Name || !Call || !Mail || !Nickname || !Design || !Piece || !Member || !Continent) {
+            return alert("모든 값을 넣어주세요.")
+        }
+        if (PolicyChecked === false) {
+            return alert("개인정보이용에 동의하지 않으시면 온라인 전시 페이지를 신청하실 수 없습니다.")
+        }
+        if (TypeChecked === false) {
+            return alert("신청 타입에 체크하지 않으시면 온라인 전시 페이지를 신청하실 수 없습니다.")
+        }
+
+        //서버에 채운 값들을 req로 보낸다.
+        const body = {
+            //writer -> 로그인한 사람의 id - auth.js에 있는 user 정보를 가져온다
+            writer: props.user.userData._id,
+            name: Name,
+            call: Call,
+            mail: Mail,
+            nickname: Nickname,
+            design: Design,
+            piece: Piece,
+            member: Member,
+            continent: Continent,
+            policy: PolicyChecked,
+            type: TypeChecked,
+            marketing: MarketingChecked,
+        }
+
+        console.log('body', body)
+
+        axios
+            .post("/api/application", body)
+            .then(response => {
+                if (response.data.success) {
+                    alert('온라인 전시페이지 신청이 완료되었습니다.')
+                    //상품 업로드에 성공하면 바로 메인 페이지로 넘어가게 한다
+                    //이메일 전송
+                    // https://skm1104.tistory.com/61
+                    props
+                        .history
+                        .push('/')
+                } else {
+                    alert('온라인 전시페이지 신청에 실패했습니다.')
+                }
+            })
+    }
+
+    
+
     return (
         <div style={{
-                height: '2000px'
+                height: '1500px'
             }}>
             <img
                 src={ExhibitApplicationImg}
@@ -103,7 +180,7 @@ function ExhibitionAplicationPage() {
                         <Divider/>
                     </div>
                 </div>
-                <Form>
+                <Form onSubmitCapture={submitHandler}>
                     <div
                         style={{
                             display: 'inline-block',
@@ -435,7 +512,9 @@ function ExhibitionAplicationPage() {
                             style={{
                                 textAlign: 'center'
                             }}>
-                            <Radio.Group onChange={typeCheckedHandler} value={TypeChecked}>
+                            <Radio.Group 
+                                onChange={typeCheckedHandler} 
+                                value={TypeChecked}>
                                 <Radio value={true}>개인</Radio>
                                 <Radio value={false}>단체</Radio>
                             </Radio.Group>
@@ -546,16 +625,20 @@ function ExhibitionAplicationPage() {
                                             textDecoration: 'underline',
                                             textUnderlinePosition: 'under',
                                             marginTop: '40px'
-                                        }}>이름</h3>
-                                    <Input
-                                        placeholder="필수 입력란"
-                                        onChange={nameChangeHandler}
-                                        value={Name}
+                                        }}>희망 디자인</h3>
+                                    <Select
                                         style={{
-                                            boxShadow: '5px 5px 25px 10px #e5e5e5',
-                                            height: '60px',
-                                            width: '90%'
-                                        }}/>
+                                            width: '90%',
+                                            marginTop: '10px',
+                                            marginBottom: '10px',
+                                            background: '#fff'
+                                        }}
+                                        onChange={selectHandleChange}
+                                        size='large'
+                                        value={Design}>
+                                        <Option value="2" key="2">2D 디자인</Option>
+                                        <Option value="3" key="3">3D 디자인</Option>
+                                    </Select>
                                 </div>
                                 <div>
                                     <h3
@@ -563,12 +646,12 @@ function ExhibitionAplicationPage() {
                                             textDecoration: 'underline',
                                             textUnderlinePosition: 'under',
                                             marginTop: '20px'
-                                        }}>연락처</h3>
+                                        }}>작품 수량</h3>
                                     <Input
                                         placeholder="필수 입력란"
                                         type='number'
-                                        onChange={callChangeHandler}
-                                        value={Call}
+                                        onChange={pieceChangeHandler}
+                                        value={Piece}
                                         style={{
                                             boxShadow: '5px 5px 25px 10px #e5e5e5',
                                             height: '60px',
@@ -581,11 +664,11 @@ function ExhibitionAplicationPage() {
                                             textDecoration: 'underline',
                                             textUnderlinePosition: 'under',
                                             marginTop: '20px'
-                                        }}>E-Mail</h3>
+                                        }}>참가 인원</h3>
                                     <Input
                                         placeholder="필수 입력란"
-                                        onChange={mailChangeHandler}
-                                        value={Mail}
+                                        onChange={memberChangeHandler}
+                                        value={Member}
                                         style={{
                                             boxShadow: '5px 5px 25px 10px #e5e5e5',
                                             height: '60px',
@@ -598,11 +681,11 @@ function ExhibitionAplicationPage() {
                                             textDecoration: 'underline',
                                             textUnderlinePosition: 'under',
                                             marginTop: '20px'
-                                        }}>작가 및 단체명</h3>
+                                        }}>작품 종류</h3>
                                     <Input
                                         placeholder="필수 입력란"
-                                        onChange={nicknameChangeHandler}
-                                        value={Nickname}
+                                        onChange={continentChangeHandler}
+                                        value={Continent}
                                         style={{
                                             boxShadow: '5px 5px 25px 10px #e5e5e5',
                                             height: '60px',
@@ -610,6 +693,32 @@ function ExhibitionAplicationPage() {
                                         }}/>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div
+                        style={{
+                            textAlign: 'center',
+                            padding: '50px 0px 100px 0px'
+                        }}>
+                        <div
+                            style={{
+                                float: 'left',
+                                marginLeft: '250px'
+                            }}>
+                            <Button type="ghost" htmlType='submit'>
+                                등록
+                            </Button>
+                        </div>
+                        <div
+                            style={{
+                                float: 'right',
+                                marginRight: '250px'
+                            }}>
+                            <Button type="ghost">
+                                <a href={`/artwork`}>
+                                    취소
+                                </a>
+                            </Button>
                         </div>
                     </div>
                 </Form>

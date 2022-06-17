@@ -109,9 +109,6 @@ function UploadProductPage(props) {
         if (!Title || !Description || !Artist || !Images || !Tech || !Dimensions || !Continent) {
             return alert("모든 값을 넣어주세요.")
         }
-        if (Continent.length > 1) {
-            return alert("한개의 태그를 입력해주세요.")
-        }
         if (PersonalInfo === false) {
             return alert("개인정보이용에 동의하지 않으시면 게시물을 업로드하실 수 없습니다.")
         }
