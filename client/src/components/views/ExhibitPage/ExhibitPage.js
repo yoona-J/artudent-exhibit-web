@@ -278,8 +278,7 @@ function ExhibitPage() {
                     <br/>
                     <br/>
                     <div>
-                        <a
-                            href='https://docs.google.com/forms/d/e/1FAIpQLSfFiOe9JIQNa3T70rDAB0herC2U88NSmGJ7I_NHc1XP24iXag/viewform'>
+                        <a href='/exhibitionaplication'>
                             <img
                                 src={SubscribeButton}
                                 alt='img'

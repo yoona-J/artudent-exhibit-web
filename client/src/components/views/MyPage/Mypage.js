@@ -99,7 +99,7 @@ function Mypage(props) {
                     </Tabs>
                     <br />
                     <Button>
-                        <a href='https://docs.google.com/forms/d/e/1FAIpQLSfFiOe9JIQNa3T70rDAB0herC2U88NSmGJ7I_NHc1XP24iXag/viewform'>
+                        <a href='/exhibitionaplication'>
                             온라인 전시페이지 신청하기    
                         </a>
                     </Button>

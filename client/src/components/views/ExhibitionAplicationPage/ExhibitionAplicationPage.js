@@ -16,6 +16,7 @@ const {Option} = Select;
 
 function ExhibitionAplicationPage(props) {
 
+    const [IsPrivacyModal, setIsPrivacyModal] = useState(false)
     const [IsModal, setIsModal] = useState(false)
     const [PolicyChecked, setPolicyChecked] = useState(true)
     const [MarketingChecked, setMarketingChecked] = useState(true)
@@ -41,6 +42,18 @@ function ExhibitionAplicationPage(props) {
 
     const handleCancel = () => {
         setIsModal(false);
+    };
+
+    const showPrivacyModal = () => {
+        setIsPrivacyModal(true);
+    };
+
+    const privacyHandleOk = () => {
+        setIsPrivacyModal(false);
+    };
+
+    const privacyHandleCancel = () => {
+        setIsPrivacyModal(false);
     };
 
     const policyCheckedHandler = (event) => {
@@ -202,14 +215,15 @@ function ExhibitionAplicationPage(props) {
                                     fontSize: '18px',
                                     paddingTop: '21px'
                                 }}>개인정보 처리방침</p>
-                            <Button type="ghost" onClick={showModal}>
+                            <Button type="ghost" onClick={showPrivacyModal}>
                                 더보기
                             </Button>
                             <Modal
                                 title="Artudent 개인정보처리방침"
-                                visible={IsModal}
-                                onOk={handleOk}
-                                onCancel={handleCancel}>
+                                visible={IsPrivacyModal}
+                                onOk={privacyHandleOk}
+                                onCancel={privacyHandleCancel}
+                                width={1000}>
                                 <div>
                                     <p>&lt; ARTUDENT &gt; (&#39;www.artudent.co.kr&#39;이하 &#39;ARTUDENT&#39;)은(는)
                                         「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과
@@ -430,7 +444,8 @@ function ExhibitionAplicationPage(props) {
                                 title="Artudent 개인정보처리방침"
                                 visible={IsModal}
                                 onOk={handleOk}
-                                onCancel={handleCancel}>
+                                onCancel={handleCancel}
+                                width={1000}>
                                 <div>
                                     <p>*본 신청폼에 따른 정보는 Artudent회원등록 및 얼리어답터 서비스를 위한 목적으로만 사용되며, &nbsp;3년의 보관기간 이후 폐기됩니다.</p>
                                     <p><br/></p>
