@@ -135,13 +135,13 @@ function UploadProductPage(props) {
             .post("/api/product", body)
             .then(response => {
                 if (response.data.success) {
-                    alert('상품 업로드에 성공했습니다.')
+                    alert('작품 업로드에 성공했습니다.')
                     //상품 업로드에 성공하면 바로 메인 페이지로 넘어가게 한다
                     props
                         .history
                         .push('/artwork')
                 } else {
-                    alert('상품 업로드에 실패했습니다.')
+                    alert('작품 업로드에 실패했습니다.')
                 }
             })
     }
