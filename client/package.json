@@ -4,10 +4,10 @@
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^4.7.0",
-    "antd": "^3.24.1",
+    "antd": "^4.23.2",
     "axios": "^0.21.2",
     "core-js": "^3.6.4",
-    "formik": "^1.5.8",
+    "formik": "^2.2.9",
     "moment": "^2.29.4",
     "react": "^16.8.6",
     "react-app-polyfill": "^1.0.6",
